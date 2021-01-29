@@ -4,9 +4,9 @@ const homeLoginBtn = $("#loginBtn");
 const homeCreateBtn = $("#createBtn");
 
 homeLoginBtn.on("click", function () {
-  console.log("take me to login");
+  window.location.href = "/login";
 });
 
 homeCreateBtn.on("click", function () {
-  console.log("take me to create an account");
+  window.location.href = "/create";
 });
