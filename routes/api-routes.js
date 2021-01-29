@@ -22,9 +22,8 @@ module.exports = function (app) {
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
 
-            console.log(body);
-
-            res.render("index");
+            console.log(JSON.parse(body));
+            res.send(JSON.parse(body));
         });
 
     });
