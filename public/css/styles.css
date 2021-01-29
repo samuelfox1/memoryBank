@@ -3,6 +3,63 @@ header {
   text-align: center;
   margin-top: 5%;
   margin-bottom: 5%;
+<<<<<<< HEAD
+=======
+}
+
+#homeContainer {
+  padding-top: 10%;
+  padding-bottom: 10%;
+  text-align: center;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+}
+#createContainer {
+  padding-top: 3%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+#loginContainer {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.login-row {
+  margin: 0 auto;
+  width: 70%;
+}
+
+#history-header {
+  text-align: center;
+}
+
+.history-row {
+  width: 80%;
+  margin-top: 3%;
+  text-align: center;
+  height: 50px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+#historyContainer {
+  border: 1px solid black;
+  height: 100vh;
+}
+
+.historydate {
+  margin: 0 auto;
+  margin-top: 4px;
+  height: 40px;
+  width: 90px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+>>>>>>> dev
 }
 
 #homeContainer {
@@ -58,3 +115,41 @@ header {
   text-align: center;
   align-items: center;
 }
+
+
+.nav-wrapper {
+  padding-left: 2vw;
+  background-color: rgb(245, 125, 78);
+}
+
+#hororscopeForDay, #otherLuckyInfo {
+  text-align: center;
+  border: solid;
+  border-width: thin;
+  margin: 1vw;
+}
+
+#uploadArea, #submitButton {
+  text-align: center;
+}
+
+#memory, #submit {
+  background-color: rgb(245, 125, 78);
+}
+
+#editButton {
+  text-align: right
+}
+
+#deleteButton {
+  text-align: left;
+}
+
+#edit, #delete {
+  background-color: rgb(245, 125, 78);
+}
+
+/* #dropdown1 {
+  color: black;
+  background-color: black;
+} */
