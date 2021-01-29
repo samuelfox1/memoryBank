@@ -17,6 +17,17 @@ module.exports = function (app) {
 
   app.get("/create", function (req, res) {
     res.render("create");
+<<<<<<< HEAD
+  });
+
+  app.get("/home", function (req, res) {
+    res.render("userHome");
+  });
+
+  app.get("/review", function (req, res) {
+    res.render("userHome2");
+=======
+>>>>>>> dev
   });
 
   app.post("/api/", function (req, res) {

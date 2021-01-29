@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Entry</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">History</a></li>
+        <li><a href="#!">Feed</a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Home</a>
+            <ul class="right hide-on-med-and-down">
+
+                <!-- Dropdown Trigger -->
+                <li>
+                    <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+                        <i class="material-icons right">dehaze</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div id="hororscopeForDay">
+        <p>Today's Date and Horrorscope. Placeholder text below</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore dolor, cumque officia autem nesciunt,
+            accusamus laboriosam tempora mollitia temporibus earum nemo optio nisi dolorem atque! Suscipit blanditiis
+            saepe hic!</p>
+    </div>
+
+    <div id="otherLuckyInfo">
+        <p>Lucky color, lucky number, lucky time, compatibility with other signs. Placeholder text below</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur pariatur perspiciatis deleniti debitis
+            distinctio maxime minus iure, impedit placeat voluptate quia eius nulla unde vel ex incidunt temporibus
+            repellendus excepturi.</p>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div id="uploadArea">
+        <a class="waves-effect waves-light btn" id="memory">Upload Memory Picture</a>
+    </div>
+
+    <br>
+
+
+
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Read/Edit your Journal Entry</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="containers">
+        <div class="row">
+            <div class="col s6" id="editButton">
+                <a class="waves-effect waves-light btn" id="edit">Edit</a>
+            </div>
+
+            <div class="col s6" id="deleteButton">
+                <a class="waves-effect waves-light btn" id="delete">Delete</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/userHome.js"></script>
+
+</html>
