@@ -31,14 +31,14 @@ app.set("view engine", "handlebars");
 
 // =============================================================
 
-// Routes
+// Routes -- ROUTES MUST COME AFTER MIDDLEWARE AND HANDLEBARS
 // =============================================================
 require("./routes/html-routes.js")(app);
 require("./routes/all-user-routes.js")(app);
 require("./routes/user-data-routes.js")(app);
 require("./routes/history-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
-// Syncing our sequelize models and then starting our Express app
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: false }).then(function () {
