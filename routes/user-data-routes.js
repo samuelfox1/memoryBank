@@ -28,10 +28,29 @@ module.exports = function (app) {
       });
   });
 
-  app.post("/api/user_data", function (req, res) {
+  app.post("/api/:user_name/", function (req, res) {
     console.log(req.body, "+++++++++++++++++++++++++++++++++++++++++");
-    db.user_data.create(req.body).then(function (data) {
-      res.json(data);
-    });
+    let userId;
+    db.all_user
+      .findOne({
+        where: {
+          user_name: req.params.user_name,
+        },
+        userId,
+      })
+      .then((data) => {
+        db.user_data
+          .create({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            sign: req.body.sign,
+            email: req.body.email,
+            allUserId: data.id,
+          })
+          .then(function (data) {
+            res.json(data);
+          });
+        console.log(data.id, "================================");
+      });
   });
 };

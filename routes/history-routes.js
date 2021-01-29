@@ -15,9 +15,9 @@ module.exports = function (app) {
     });
   });
 
-  app.delete("/api/daily_history/:id", function (req, res) {
+  app.put("/api/daily_history/:id", function (req, res) {
     db.daily_history
-      .destroy({
+      .update(req.body, {
         where: {
           id: req.params.id,
         },
@@ -26,11 +26,12 @@ module.exports = function (app) {
         res.json(data);
       });
   });
-  app.put("/api/:daily_history/:id", function (req, res) {
+
+  app.delete("/api/daily_history/:id", function (req, res) {
     db.daily_history
-      .update(req.body, {
+      .destroy({
         where: {
-          id: req.body.id,
+          id: req.params.id,
         },
       })
       .then(function (data) {
