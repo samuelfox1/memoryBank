@@ -15,5 +15,12 @@ module.exports = function (sequelize, DataTypes) {
       },
     },
   });
+  all_user.associate = function (models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    all_user.hasOne(models.user_data, {
+      // onDelete: "cascade",
+    });
+  };
   return all_user;
 };
