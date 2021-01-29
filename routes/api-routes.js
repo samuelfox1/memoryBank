@@ -25,12 +25,19 @@ module.exports = function (app) {
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
             let aztro = JSON.parse(body)
-            console.log(aztro)
+            let date = new Date(aztro.current_date)
+            let year = date.getFullYear()
+            let month = date.getMonth()
+            let day = date.getDay()
+            console.log(date)
+            console.log(year)
+            console.log(month)
+            console.log(day)
 
-
+            db.daily_history.findOne()
             db.daily_history.create(aztro).then((data) => {
 
-                res.json(data)
+                res.json(aztro)
             })
 
         });
