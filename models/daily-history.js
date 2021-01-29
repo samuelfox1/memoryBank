@@ -25,9 +25,6 @@ module.exports = function (sequelize, DataTypes) {
     description: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1, 140],
-      },
     },
     lucky_number: {
       type: DataTypes.STRING,
@@ -52,17 +49,12 @@ module.exports = function (sequelize, DataTypes) {
     },
     memory_image: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 140],
-      },
+      allowNull: true,
     },
+
     journal_entry: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 140],
-      },
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
     public_status: {
       type: DataTypes.BOOLEAN,
