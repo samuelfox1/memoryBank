@@ -1,0 +1,31 @@
+.nav-wrapper {
+    padding-left: 2vw;
+    background-color: rgb(245, 125, 78);
+}
+
+#hororscopeForDay, #otherLuckyInfo {
+    text-align: center;
+    border: solid;
+    border-width: thin;
+    margin: 1vw;
+}
+
+#uploadArea, #submitButton {
+    text-align: center;
+}
+
+#memory, #submit {
+    background-color: rgb(245, 125, 78);
+}
+
+#editButton {
+    text-align: right
+}
+
+#deleteButton {
+    text-align: left;
+}
+
+#edit, #delete {
+    background-color: rgb(245, 125, 78);
+}
