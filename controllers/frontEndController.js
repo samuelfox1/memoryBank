@@ -13,8 +13,10 @@ router.get("/history", function (req, res) {
   res.render("history");
 });
 
-router.get("/create", function (req, res) {
-  res.render("create");
+router.get("/create", (req, res) => {
+  res.render("create", {
+    user: req.session.user,
+  });
 });
 
 router.get("/home", function (req, res) {

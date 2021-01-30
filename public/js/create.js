@@ -4,17 +4,18 @@ $(".dropdown-trigger").dropdown();
 console.log("hello");
 
 function createAccount() {
+  // event.preventDefault();
+  console.log($(".zodiacBtn").text(), "++++++++++++++++++++++++++");
   $.post("/create", {
     first_name: $("#first_name").val(),
     last_name: $("#last_name").val(),
     email: $("#email").val(),
-    username: $("#username").val(),
-    password: $("password").val(),
-    sign: $("#dropdown1").val(),
+    user_name: $("#username").val(),
+    password: $("#password").val(),
+    sign: $(".zodiacBtn").text(),
   }).then(function () {
-    console.log($("#dropdown1").val());
     console.log("signed up!");
-    // window.location.href = "/";
+    window.location.href = "/";
   });
 }
 
@@ -30,6 +31,8 @@ saveAccountBtn.on("click", function (event) {
   if (userPw.length < 8 || userPw.length > 16) {
     alert("Password must be between 8-16 characters");
   } else {
+    createAccount();
+
     console.log("Valid password!");
   }
 });
@@ -39,5 +42,3 @@ $(".zodiac").on("click", function (event) {
   const zodiacText = $(event.target).text();
   $(".zodiacBtn").text(zodiacText);
 });
-
-createAccount();
