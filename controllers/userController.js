@@ -25,7 +25,7 @@ const bcrypt = require("bcrypt");
 //     });
 // });
 
-router.post("/signup", function (req, res) {
+router.post("/create", function (req, res) {
   db.user_data
     .create({
       user_name: req.body.user_name,
