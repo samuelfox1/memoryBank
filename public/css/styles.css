@@ -1,3 +1,9 @@
+.body {
+  background: url("https://www.muralswallpaper.com/app/uploads/horoscope-signs-zodiac-wallpaper-mural-Plain-820x532.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
 header {
   border: 1px solid black;
   text-align: center;
