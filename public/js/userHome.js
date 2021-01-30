@@ -1,36 +1,35 @@
 $(".dropdown-trigger").dropdown();
 
-$('#textarea1').val('New Text');
-M.textareaAutoResize($('#textarea1'));
-
+$("#textarea1").val("New Text");
+M.textareaAutoResize($("#textarea1"));
 
 $("#memory").on("click", function () {
-    alert("Button works")
-})
-
+  alert("Button works");
+});
 
 $("#submit").on("click", function (event) {
-    event.preventDefault();
-    $.post('api/entries', {
-        memory_image: $("#memory_image").val(),
-        journal_entry: $("#journal_entry").val(),
-    }).then(data => {
-        console.log("saved entry")
-        window.location.href = "/history"
-    }).fail(err => {
-        console.log("error")
-        console.log(err);
-        alert("eat my dust")
+  event.preventDefault();
+  $.post("api/entries", {
+    memory_image: $("#memory_image").val(),
+    journal_entry: $("#journal_entry").val(),
+  })
+    .then((data) => {
+      console.log("saved entry");
+      window.location.href = "/history";
     })
-})
-// TODO: Figure out if you have to rewrite the api/entries thing above to be something else
+    .fail((err) => {
+      console.log("error");
+      console.log(err);
+      alert("eat my dust");
+    });
+});
 
+// TODO: Figure out if you have to rewrite the api/entries thing above to be something else
 
 // const textInput = $('#textarea1').val();
 // console.log(textInput)
 // window.location.href = "/history"
 // alert("Updated successfully!")
-
 
 // $.post("/home", {
 //     // memory_image: $("#memory_image").val(),
@@ -45,29 +44,22 @@ $("#submit").on("click", function (event) {
 //     alert("Submission failed!")
 // })
 
-
-
 $("#edit").on("click", function (event) {
-    event.preventDefault();
-    const textInput = $('#textarea1').val();
-    console.log(textInput)
-    window.location.href = "/history"
-    alert("Update successfully!")
-})
+  event.preventDefault();
+  const textInput = $("#textarea1").val();
+  console.log(textInput);
+  window.location.href = "/history";
+  alert("Update successfully!");
+});
 
 $("#delete").on("click", function () {
-    alert("Button works")
-})
+  alert("Button works");
+});
 
-$('#textarea1').val('');
-
-
+$("#textarea1").val("");
 
 // TODO: Make it so that the submit button sends the entry to the history page as a clickable button. Also, populate with the "created on" field with the date that the entry was written
-// TODO: Make it so that when you pres the edit button, it updates the content of the entry on the history page and also populates the "edited on" field with the date the entry was edited 
-
-
-
+// TODO: Make it so that when you pres the edit button, it updates the content of the entry on the history page and also populates the "edited on" field with the date the entry was edited
 
 // var backgroundImage = ["image 1", 'image 2', 'image 3']
 // var uniqueBackground = ""
