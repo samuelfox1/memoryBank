@@ -1,5 +1,23 @@
+const bcrypt = require("bcrypt");
+
 module.exports = function (sequelize, DataTypes) {
   var user_data = sequelize.define("user_data", {
+    user_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        len: [1, 140],
+      },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8],
+      },
+    },
+
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -37,15 +55,18 @@ module.exports = function (sequelize, DataTypes) {
     //   },
     // },
   });
-  user_data.associate = function (models) {
-    // We're saying that a Post should belong to an Author
-    // A Post can't be created without an Author due to the foreign key constraint
-    user_data.belongsTo(models.all_user, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-  };
+  // User.associate = function (models) {
+  //   // add associations here
+  //   User.hasMany(models.Review);
+  // };
+
+  user_data.beforeCreate(function (user_data) {
+    user_data.password = bcrypt.hashSync(
+      user_data.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
+  });
   // return Test;
   return user_data;
 };

@@ -5,18 +5,30 @@
 // *** Dependencies
 // =============================================================
 const express = require("express");
+const session = require("express-session");
 
 // Sets up the Express App
 // =============================================================
 const app = express();
 const PORT = process.env.PORT || 8080;
-
+require("dotenv").config();
 // Requiring our models for syncing
 const db = require("./models");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 2,
+    },
+  })
+);
 
 // Static directory
 app.use(express.static("public"));
@@ -25,7 +37,6 @@ app.use(express.static("public"));
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -33,11 +44,10 @@ app.set("view engine", "handlebars");
 
 // Routes -- ROUTES MUST COME AFTER MIDDLEWARE AND HANDLEBARS
 // =============================================================
-require("./routes/html-routes.js")(app);
-require("./routes/all-user-routes.js")(app);
-require("./routes/user-data-routes.js")(app);
-require("./routes/history-routes.js")(app);
-require("./routes/api-routes.js")(app);
+const userRoutes = require("./controllers/userController");
+app.use(userRoutes);
+const frontEndRoutes = require("./controllers/frontEndController");
+app.use(frontEndRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
