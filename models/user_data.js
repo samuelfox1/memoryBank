@@ -59,9 +59,9 @@ module.exports = function (sequelize, DataTypes) {
   //   User.hasMany(models.Review);
   // };
 
-  user_data.beforeCreate(function (user) {
-    user.password = bcrypt.hashSync(
-      user.password,
+  user_data.beforeCreate(function (user_data) {
+    user_data.password = bcrypt.hashSync(
+      user_data.password,
       bcrypt.genSaltSync(10),
       null
     );
