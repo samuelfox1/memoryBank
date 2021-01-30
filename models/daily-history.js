@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var daily_histories = sequelize.define("daily_history", {
+  var daily_history = sequelize.define("daily_history", {
     color: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -50,6 +50,7 @@ module.exports = function (sequelize, DataTypes) {
     memory_image: {
       type: DataTypes.STRING,
       allowNull: true,
+      default: "",
     },
 
     journal_entry: {
@@ -61,6 +62,12 @@ module.exports = function (sequelize, DataTypes) {
       default: false,
     },
   });
+
+  daily_history.associate = function (models) {
+    // add associations here
+    daily_history.belongsTo(models.user_data);
+    // Review.belongsToMany(models.Platform,{through:"ReviewPlatform"})
+  };
   // return Test;
-  return daily_histories;
+  return daily_history;
 };

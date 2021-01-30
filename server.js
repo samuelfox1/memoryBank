@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
+
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -48,6 +49,8 @@ const userRoutes = require("./controllers/userController");
 app.use(userRoutes);
 const frontEndRoutes = require("./controllers/frontEndController");
 app.use(frontEndRoutes);
+const aztroRoutes = require("./controllers/aztroController");
+app.use(aztroRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
