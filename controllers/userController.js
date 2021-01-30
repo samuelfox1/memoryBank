@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 
 router.post("/create", function (req, res) {
   console.log(req.body.sign, "+++++++++++++++++++");
+
   db.user_data
     .create({
       user_name: req.body.user_name,
