@@ -1,12 +1,19 @@
 // Requiring our models
 const db = require("../models");
 
+
+
 // Routes
 // =============================================================
 module.exports = function (app) {
   app.get("/", function (req, res) {
     res.render("index");
   });
+<<<<<<< HEAD
+
+  app.get("/test", function (req, res) {
+    res.render("test");
+=======
   app.get("/login", function (req, res) {
     res.render("login");
   });
@@ -25,11 +32,6 @@ module.exports = function (app) {
 
   app.get("/review", function (req, res) {
     res.render("userHome2");
-  });
-
-  app.post("/api/", function (req, res) {
-    db.Author.create(req.body).then(function (dbAuthor) {
-      res.json(dbAuthor);
-    });
+>>>>>>> dev
   });
 };

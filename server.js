@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
+
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -42,17 +43,18 @@ app.set("view engine", "handlebars");
 
 // =============================================================
 
-// Routes
+// Routes -- ROUTES MUST COME AFTER MIDDLEWARE AND HANDLEBARS
 // =============================================================
 const userRoutes = require("./controllers/userController");
 app.use(userRoutes);
 const frontEndRoutes = require("./controllers/frontEndController");
 app.use(frontEndRoutes);
+const aztroRoutes = require("./controllers/aztroController");
+app.use(aztroRoutes);
 
 // Syncing our sequelize models and then starting our Express app
-// Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });

@@ -5,6 +5,10 @@ console.log("hello");
 
 function createAccount() {
   // event.preventDefault();
+  let sign = $(".zodiacBtn").text().split(" ");
+
+  console.log(sign, "++++++++++++++++");
+
   console.log($(".zodiacBtn").text(), "++++++++++++++++++++++++++");
   $.post("/create", {
     first_name: $("#first_name").val(),
@@ -12,10 +16,10 @@ function createAccount() {
     email: $("#email").val(),
     user_name: $("#username").val(),
     password: $("#password").val(),
-    sign: $(".zodiacBtn").text(),
+    sign: sign[0],
   }).then(function () {
     console.log("signed up!");
-    window.location.href = "/";
+    window.location.href = "/login";
   });
 }
 

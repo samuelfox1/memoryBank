@@ -55,10 +55,11 @@ module.exports = function (sequelize, DataTypes) {
     //   },
     // },
   });
-  // User.associate = function (models) {
-  //   // add associations here
-  //   User.hasMany(models.Review);
-  // };
+
+  user_data.associate = function (models) {
+    // add associations here
+    user_data.hasMany(models.daily_history);
+  };
 
   user_data.beforeCreate(function (user_data) {
     user_data.password = bcrypt.hashSync(
