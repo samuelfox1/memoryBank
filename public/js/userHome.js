@@ -69,12 +69,12 @@ $('#textarea1').val('');
 
 
 
-var backgroundImage = ["image 1", 'image 2', 'image 3']
-var uniqueBackground = ""
-if (sign = "aquarius") {
-    uniqueBackground = backgroundImage[0]
-    $("body").style.backgroundImage = uniqueBackground
+// var backgroundImage = ["image 1", 'image 2', 'image 3']
+// var uniqueBackground = ""
+// if (sign = "aquarius") {
+//     uniqueBackground = backgroundImage[0]
+//     $("body").style.backgroundImage = uniqueBackground
 
-} else if () {
+// } else if () {
 
-}
+// }
