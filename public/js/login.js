@@ -1,16 +1,18 @@
-// const loginAccountBtn = $("#loginToAccountBtn");
+const loginAccountBtn = $("#loginToAccountBtn");
 
-// $(".dropdown-trigger").dropdown();
-
-// loginAccountBtn.on("click", function (event) {
-//   event.preventDefault();
-//   console.log("logging into account");
-// });
-
-// function userLogin() {
-//   $.get("/login", function () {
-//     console.log("to login");
-//   });
-// }
-
-// userLogin();
+loginAccountBtn.on("click", (event) => {
+  event.preventDefault();
+  $.post("/login", {
+    user_name: $("#username").val(),
+    password: $("#password").val(),
+  })
+    .then((data) => {
+      console.log("logged in!");
+      window.location.href = "/home";
+    })
+    .fail((err) => {
+      console.log("login failed");
+      console.log(err);
+      alert("login failed!");
+    });
+});

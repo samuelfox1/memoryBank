@@ -19,4 +19,12 @@ router.get("/create", (req, res) => {
   });
 });
 
+router.get("/home", function (req, res) {
+  res.render("userHome");
+});
+
+router.get("/review", function (req, res) {
+  res.render("userHome2");
+});
+
 module.exports = router;
