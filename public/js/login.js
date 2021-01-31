@@ -12,11 +12,16 @@ loginAccountBtn.on("click", (event) => {
       $.get(`/api/aztro/${data.id}/${data.sign}`);
 
       //api first before below
-      // window.location.href = "/home";
+
       // $.get(`/api/aztro/${data.id}/${data.sign}`);
     })
     .then((data) => {
       console.log(data);
+      // $.get("/home")
+      window.location.href = "/home";
+    })
+    .then((data) => {
+      console.log(data, "plplplplpllplplplplplplplp");
     })
     .fail((err) => {
       console.log("login failed");

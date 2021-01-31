@@ -68,6 +68,29 @@ router.post("/image", async function (req, res) {
     });
 });
 
+router.get("/home", async function (req, res) {
+  var lastEntry = await getLastEntry(req.session.user.id);
+  db.daily_history
+    .findOne({
+      where: {
+        createdAt: lastEntry.createdAt,
+      },
+      include: [db.user_data],
+    })
+    .then((data) => {
+      console.log(
+        data.dataValues.user_datum.dataValues.first_name,
+        "!!!!!!!!!!!!!!!!!!"
+      );
+      const hbsObj = {
+        histories: data.dataValues,
+        users: data.dataValues.user_datum.dataValues,
+      };
+
+      res.render("userHome", hbsObj);
+    });
+});
+
 function getLastEntry(data) {
   return new Promise((resolve, reject) => {
     db.daily_history
@@ -87,4 +110,5 @@ function getLastEntry(data) {
       });
   });
 }
+
 module.exports = router;
