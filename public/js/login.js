@@ -9,8 +9,14 @@ loginAccountBtn.on("click", (event) => {
     .then((data) => {
       console.log("logged in!");
       console.log(data, "++++++++++++++++++++++++++++++");
-      window.location.href = "/home";
       $.get(`/api/aztro/${data.id}/${data.sign}`);
+
+      //api first before below
+      // window.location.href = "/home";
+      // $.get(`/api/aztro/${data.id}/${data.sign}`);
+    })
+    .then((data) => {
+      console.log(data);
     })
     .fail((err) => {
       console.log("login failed");
