@@ -10,7 +10,7 @@ $("#memory").on("click", function () {
 $("#submit").on("click", function (event) {
   event.preventDefault();
   $.post("api/entries", {
-    memory_image: $("#memory_image").val(),
+    // memory_image: $("#memory_image").val(),
     journal_entry: $("#journal_entry").val(),
   })
     .then((data) => {
@@ -23,6 +23,12 @@ $("#submit").on("click", function (event) {
       alert("eat my dust");
     });
 });
+
+$("#upload_widget").on("click"),
+  function (event) {
+    event.preventDefualt();
+    $.post("");
+  };
 
 // TODO: Figure out if you have to rewrite the api/entries thing above to be something else
 

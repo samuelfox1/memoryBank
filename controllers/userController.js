@@ -48,20 +48,43 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.get("/readsessions", (req, res) => {
-  res.json(req.session);
+router.post("/image", async function (req, res) {
+  var lastEntry = await getLastEntry(req.session.user.id);
+  console.log(lastEntry.createdAt);
+  db.daily_history
+    .update(
+      {
+        memory_image: req.body.memory_image,
+      },
+      {
+        where: {
+          createdAt: lastEntry.createdAt,
+        },
+      }
+    )
+    .then((data) => {
+      console.log(data, "!!!!!!!!!!!!!!!!!!");
+      res.send("updated");
+    });
 });
 
-//   router.get("/secretclub",(req,res)=>{
-//     if(req.session.user){
-//         res.send(`welcome to memoryBank, ${req.session.user.user_name}!`)
-//     } else {
-//         res.status(401).send("login first please")
-//     }
-// })
-
-//   router.get('/logout',(req,res)=>{
-//     req.session.destroy();
-//     res.redirect('/')
-
+function getLastEntry(data) {
+  return new Promise((resolve, reject) => {
+    db.daily_history
+      .findAll(
+        {
+          where: {
+            userDatumId: data,
+          },
+        },
+        {
+          limit: 1,
+          order: [["createdAt", "DESC"]],
+        }
+      )
+      .then((data) => {
+        resolve(data[0]);
+      });
+  });
+}
 module.exports = router;

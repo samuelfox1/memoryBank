@@ -17,9 +17,10 @@ function createAccount() {
     user_name: $("#username").val(),
     password: $("#password").val(),
     sign: sign[0],
-  }).then(function () {
+  }).then(function (data) {
+    console.log(data);
     console.log("signed up!");
-    window.location.href = "/login";
+    // window.location.href = "/login";
   });
 }
 

@@ -30,18 +30,18 @@ router.get("/home", function (req, res) {
       include: [db.daily_history],
     })
     .then((data) => {
-      console.log(data, "00000000000000000000");
-      const jsonData = data.map((obj) => {
-        const jsonObj = obj.toJSON();
+      // console.log(data, "00000000000000000000");
+      // const jsonData = data.map((obj) => {
+      //   const jsonObj = obj.toJSON();
 
-        return jsonObj;
-      });
+      //   return jsonObj;
+      // });
 
-      console.log(data.first_name);
-      var object = {
-        horoscope: jsonData,
-      };
-      res.render("userHome", object);
+      // console.log(data.first_name);
+      // var object = {
+      //   horoscope: jsonData,
+      // };
+      res.render("userHome");
     });
 });
 
