@@ -51,6 +51,8 @@ const frontEndRoutes = require("./controllers/frontEndController");
 app.use(frontEndRoutes);
 const aztroRoutes = require("./controllers/aztroController");
 app.use(aztroRoutes);
+// const cloudRoutes = require("./controllers/cloudController");
+// app.use(cloudRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

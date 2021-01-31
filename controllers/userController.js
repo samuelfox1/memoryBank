@@ -1,8 +1,9 @@
+//depndencies
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcrypt");
-
+// route for creating a user profile
 router.post("/create", function (req, res) {
   console.log(req.body.sign, "+++++++++++++++++++");
 
@@ -22,6 +23,8 @@ router.post("/create", function (req, res) {
       res.status(500).json(err);
     });
 });
+
+//route for login taking user_name and password a match conditionals
 router.post("/login", (req, res) => {
   db.user_data
     .findOne({
@@ -48,9 +51,9 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.get("/readsessions", (req, res) => {
-  res.json(req.session);
-});
+// router.get("/readsessions", (req, res) => {
+//   res.json(req.session);
+// });
 
 //   router.get("/secretclub",(req,res)=>{
 //     if(req.session.user){
