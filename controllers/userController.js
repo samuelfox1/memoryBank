@@ -59,7 +59,7 @@ router.post("/login", (req, res) => {
 });
 
 // image url data string being sent from the front end cloudinary call
-router.post("/image", async function (req, res) {
+router.post("/api/image", async function (req, res) {
   // the variable lastEntry refers to the createdAt column in our DB based upon the specific user ID wihhin the scope of our user session
   var lastEntry = await getLastEntry(req.session.user.id);
   // await fuction makes sure the lastEntry variable is populated with the function (data) from getLastEntry
@@ -80,6 +80,30 @@ router.post("/image", async function (req, res) {
     .then((data) => {
       console.log(data, "!!!!!!!!!!!!!!!!!!");
       res.send("updated");
+    });
+});
+
+router.post("/api/journal", async function (req, res) {
+  // the variable lastEntry refers to the createdAt column in our DB based upon the specific user ID wihhin the scope of our user session
+  var lastEntry = await getLastEntry(req.session.user.id);
+  // await fuction makes sure the lastEntry variable is populated with the function (data) from getLastEntry
+
+  console.log(lastEntry.createdAt);
+  // The DB is then probed for an update in the daily_history table at the column index of memomry_image, updating that column with the sent back data which is a url string (req.body.memory_image).
+  db.daily_history
+    .update(
+      {
+        journal_entry: req.body.journal_entry,
+      },
+      {
+        where: {
+          createdAt: lastEntry.createdAt,
+        },
+      }
+    )
+    .then((data) => {
+      console.log(data, "!!!!!!!!!!!!!!!!!!");
+      res.send("journal updated");
     });
 });
 

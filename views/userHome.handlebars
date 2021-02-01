@@ -7,6 +7,7 @@
 <nav>
     <div class="nav-wrapper">
         <a href="/home" class="brand-logo"> <i class="material-icons">home</i></a>
+         
         <ul class="right hide-on-med-and-down">
 
             <!-- Dropdown Trigger -->
@@ -17,10 +18,33 @@
         </ul>
     </div>
 </nav>
-<div class="container" id="welcomeContainer">
 
-    <h1 id="welcomeH1">Welcome {{users.first_name}}</h1>
+<div class="container welcomeContainer" >
+<div class="row">
+    <div class="col s10">
+<h1 id="welcomeH1">Welcome {{users.first_name}}</h1>
+    </div>
+    <div class="col s2">
+<div class="row">
+    <div class="col s12">
+<div class="switch">
+    <label>
+      
+      <input type="checkbox">
+      <span class="lever"></span>
+    
+    </label>
+    </div>
+    </div>
+</div>
 
+    </div>
+</div>
+    
+
+ 
+
+  
     <div id="hororscopeForDay">
         <h3>{{users.sign}} </h3>
         <p>{{histories.description}}</p>
@@ -30,7 +54,7 @@
         <p>Lucky Color: {{histories.color}}</p>
         <p>Lucky Number: {{histories.lucky_number}}</p>
         <p>Lucky Time: {{histories.lucky_time}}</p>
-        <p>Sign Compatibility{{histories.compatibility}}</p>
+        <p>Sign Compatibility: {{histories.compatibility}}</p>
         <p>Mood: {{histories.mood}}</p>
         
     </div>
@@ -53,7 +77,7 @@
                     console.log('Done! Here is the image info: ', result.info.secure_url);
 
                     //Cloudinary sends a post request to the /image route to the backend containg a string of data containg the image url to cloudinary
-                    $.post("/image", {
+                    $.post("/api/image", {
                         memory_image: result.info.secure_url
                     })
 

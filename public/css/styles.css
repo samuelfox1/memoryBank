@@ -27,7 +27,7 @@
 /* Login/Create homepage */
 .defaultH1 {
   margin: 0%;
-  margin-bottom: 5%;
+
   font-family: "Dancing Script", cursive;
 }
 
@@ -38,9 +38,22 @@
   width: 50vh;
   padding-top: 8%;
   padding-bottom: 10%;
-  text-align: center;
+  display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLAqI9gsj8525IrLMtZo1ZtfMYP5dXUk9mEg&usqp=CAU");
+  background-position: center;
+  background-size: cover;
+}
+/* INDEX STYLE */
+.indexDiv,
+.loginDiv {
+  display: block;
+}
+
+.buttons {
+  margin-top: 4%;
 }
 
 /* Create Account */
@@ -60,54 +73,46 @@
 }
 
 /* Login Page */
-#loginContainer {
-  padding-top: 3%;
-}
 
 #mainLoginRow {
-  margin-top: 6%;
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  padding: 0%;
+  height: 170px;
+  margin: 0%;
+  margin-bottom: 2%;
+  color: black;
+}
+.labelColor {
+  color: black !important;
+}
+.usernameRow {
+  margin: 0%;
+  color: black;
 }
 
-.login-row {
-  margin: 0 auto;
-  width: 70%;
+.login-input {
+  color: white;
 }
 
+/* History page */
 #history-header {
   text-align: center;
 }
 
-.history-row {
-  width: 80%;
-  margin-top: 3%;
-  text-align: center;
-  height: 50px;
-  text-align: center;
-  border: 1px solid black;
-}
-
-#historyContainer {
+.historyContainer {
   border: 1px solid black;
   height: 100vh;
   background-color: white;
 }
 
-.historydate {
-  margin: 0 auto;
-  margin-top: 4px;
-  height: 40px;
-  width: 90px;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
-
 .nav-wrapper {
   padding-left: 2vw;
-  background-color: rgb(245, 125, 78);
+  background-color: #26a69a;
 }
+
+/* User homepage */
 
 #hororscopeForDay,
 #otherLuckyInfo {
@@ -140,19 +145,33 @@
   background-color: rgb(245, 125, 78);
 }
 
-/* #dropdown1 {
-  color: black;
-  background-color: black;
-} */
-
-#welcomeH1 {
-  color: black;
-}
-
-#welcomeContainer {
+.welcomeContainer {
   background: white;
 }
 
-.css-anf0i3 {
-  background-color: cornflowerblue !important;
+/* SWITCH MODE */
+
+.navDark {
+  background-color: black;
+}
+
+.navLight {
+  background-color: #26a69a;
+}
+
+.containerLight {
+  background: white;
+  color: black;
+}
+
+.containerDark {
+  background: black;
+  color: white;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
 }
