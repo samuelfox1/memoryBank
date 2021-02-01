@@ -1,4 +1,5 @@
 const express = require("express");
+const { HSTORE } = require("sequelize");
 const router = express.Router();
 const db = require("../models");
 
@@ -11,9 +12,9 @@ router.get("/login", function (req, res) {
   });
 });
 
-router.get("/history", function (req, res) {
-  res.render("history");
-});
+// router.get("/history", function (req, res) {
+//   res.render("history");
+// });
 
 router.get("/create", (req, res) => {
   res.render("create", {
@@ -44,8 +45,27 @@ router.get("/home", async function (req, res) {
     });
 });
 
-router.get("/review", function (req, res) {
-  res.render("userHome2");
+router.get("/history", function (req, res) {
+  console.log(req.session.user.id);
+  db.daily_history
+    .findAll({
+      where: {
+        userDatumId: req.session.user.id,
+      },
+    })
+    .then((data) => {
+      const jsonData = data.map((obj) => {
+        const jsonObj = obj.toJSON();
+
+        return jsonObj;
+      });
+
+      const hbsObj = {
+        histories: jsonData,
+      };
+
+      res.render("history", hbsObj);
+    });
 });
 
 //returns createdAt clou
