@@ -4,16 +4,17 @@
     <li><a id="signout" href="/">Logout</a></li>
 </ul>
 <nav>
-    <div class="nav-wrapper">
-        <a href="/home" class="brand-logo"> <i class="material-icons">home</i></a>
-        <ul class="right hide-on-med-and-down">
+  <div class="nav-wrapper">
+    <a href="/home" class="brand-logo"> <i class="material-icons">home</i></a>
+    <ul class="right hide-on-med-and-down">
 
-            <!-- Dropdown Trigger -->
-            <li>
-                <a class="dropdown-trigger" href="/home" data-target="dropdown1">
-                    <i class="material-icons right">dehaze</i></a></li>
-        </ul>
-    </div>
+      <!-- Dropdown Trigger -->
+      <li>
+        <a class="dropdown-trigger" href="/home" data-target="dropdown1">
+          <i class="material-icons right">dehaze</i></a>
+      </li>
+    </ul>
+  </div>
 </nav>
 
 <div class="container historyContainer">
@@ -22,7 +23,11 @@
   <div class="row history-row">
     <div class="column s12">
       <div class="historydate">
-        <a href="#!">{{histories.createdAt}}</a>
+        {{#each histories}}
+        <p>{{lucky_number}}</p>
+
+        {{/each}}
+        <a href="#!">inject date {{histories.lucky_number}}</a>
       </div>
     </div>
   </div>

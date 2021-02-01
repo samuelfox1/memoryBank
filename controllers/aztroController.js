@@ -33,7 +33,8 @@ router.get("/api/aztro/:id/:sign", async function (req, res) {
   } else {
     //send the stored results back to the frontend
     console.log("todays data already exists");
-    res.send(horoscope);
+    console.log(req.session.user);
+    res.json(req.session.user);
   }
 });
 

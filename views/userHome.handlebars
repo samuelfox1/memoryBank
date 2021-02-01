@@ -84,7 +84,7 @@
 
                         .then((data) => {
                             console.log(data, "saved image")
-                            window.location.href = "/home";
+                            location.reload()
                         })
                         .fail((err) => {
                             console.log(err)
@@ -102,11 +102,10 @@
 
 
 
+
         </script>
 
     </div>
-
-    <br>
     <p>{{histories.memory_image}}</p>
         <div class="row">
       <form class="col s12">
