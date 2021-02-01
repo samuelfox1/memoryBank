@@ -94,6 +94,22 @@
         </form>
     </div>
 
+    <div id="pubPriv">
+        <label> <input type="checkbox" class="filled-in" name="public_status" id="public_status"
+                value="false"><span>Check the box to
+                make this post public</span></label>
+
+        {{!-- on the review page, you should use a key for the value so that it's set to whatever they set it to when they submitted it --}}
+
+        {{!-- Should also add approximately this code in your JS (may have to tweek it a bit)
+        $("#public_status").on('change', function() {
+            if ($(this).is(':checked')) {
+                $(this).attr('value', 'true');
+            } else {
+                $(this).attr('value', 'false');
+            } --}}
+    </div>
+
     <div id="submitButton">
         <a class="waves-effect waves-light btn" id="submit">Submit</a>
     </div>
