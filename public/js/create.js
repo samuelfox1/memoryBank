@@ -18,9 +18,8 @@ function createAccount() {
     password: $("#password").val(),
     sign: sign[0],
   }).then(function (data) {
-    console.log(data);
     console.log("signed up!");
-    // window.location.href = "/login";
+    window.location.href = "/login";
   });
 }
 

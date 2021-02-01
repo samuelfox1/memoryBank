@@ -9,9 +9,9 @@ var userSign = "";
 
 const horoscope = [];
 
-// Routes
-// =============================================================
+// Big picture of what this call is trying to do is create ONE DAY INSTANCE of data retreval from the api for each individual user based on there unique id and passing thier sign as the query term for the API.
 
+//Recieving a get request on front end containg a route string (/api/aztro/3/Leo)
 router.get("/api/aztro/:id/:sign", async function (req, res) {
   console.log(req.params.sign, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   userSign = req.params.sign;
@@ -31,7 +31,7 @@ router.get("/api/aztro/:id/:sign", async function (req, res) {
     //send the results back to client
     res.json(horoscope);
   } else {
-    //send the stored results back to the client
+    //send the stored results back to the frontend
     console.log("todays data already exists");
     res.send(horoscope);
   }
@@ -48,9 +48,11 @@ function getToday() {
     resolve(x);
   });
 }
-
+// this will reutrn the most recent row entry for the user with id passed in
 function getLastEntryDate(data) {
+  // returning a new promise
   return new Promise((resolve, reject) => {
+    // finding the most recent ROW in daily_history WHERE the data userDatumId
     db.daily_history
       .findAll(
         {
@@ -63,10 +65,13 @@ function getLastEntryDate(data) {
           order: [["createdAt", "DESC"]],
         }
       )
+      //if the data is undefined then an entry doesn't existence
       .then((data) => {
         if (data[0] === undefined) {
-          resolve(0);
-        } else {
+          resolve("user has no entries");
+        }
+        // reformating the createdAt date structure to match todays date format
+        else {
           let x = data[0].createdAt;
           let dd = String(x.getDate()).padStart(2, "0");
           let mm = String(x.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -98,6 +103,7 @@ function makeApiRequest(data) {
       let aztro = JSON.parse(body);
 
       db.daily_history
+        //creating a whole new row with column fields to hoold the api data also set the userDatumId of the user
         .create({
           color: aztro.color,
           compatibility: aztro.compatibility,

@@ -1,7 +1,7 @@
 $(".dropdown-trigger").dropdown();
 
 $("#textarea1").val("New Text");
-M.textareaAutoResize($("#textarea1"));
+// M.textareaAutoResize($("#textarea1"));
 
 $("#memory").on("click", function () {
   alert("Button works");
@@ -24,9 +24,11 @@ $("#submit").on("click", function (event) {
     });
 });
 
+//widget button click on userhome handlebars
 $("#upload_widget").on("click"),
   function (event) {
     event.preventDefualt();
+    // sending a post request to backend containg the
     $.post("");
   };
 
@@ -75,4 +77,7 @@ $("#textarea1").val("");
 
 // } else if () {
 
-// }
+//
+$(".css-anf0i3").on("click", function () {
+  console.log("this button works");
+});

@@ -22,25 +22,35 @@ router.post("/create", function (req, res) {
       res.status(500).json(err);
     });
 });
+
+// back end recieves req(request) data from front end on a button click event.
 router.post("/login", (req, res) => {
+  // on request we search through the db at the table of user_data
   db.user_data
+    //then findOne ROW in the db
     .findOne({
+      // "where" the column user_name in that ROW is the same as the front end string data (req.body.user_name) from username input field
       where: {
         user_name: req.body.user_name,
       },
     })
+    // we store the information from that ROW selected based on the targeted column into UserData
     .then((userData) => {
+      // this will destroy the session if no information can be compared properally to the db table when searching for matching inputed username and contained db usernames.
       if (!userData) {
         req.session.destroy();
         res.status(404).send("no such user");
       } else {
+        // if a username can be found matching then compare the front end password string (req.body.password) to the contained db password (userData.password) *still have all row data*
         if (bcrypt.compareSync(req.body.password, userData.password)) {
           req.session.user = {
             id: userData.id,
             user_name: userData.user_name,
           };
+          // if user_name and password strings from the front end match the strings in the data base then a response of userData. Now send a response containing the new ROW data for that user.
           res.json(userData);
         } else {
+          // password no match
           req.session.destroy();
           res.status(401).send("wrong info");
         }
@@ -48,9 +58,14 @@ router.post("/login", (req, res) => {
     });
 });
 
+// image url data string being sent from the front end cloudinary call
 router.post("/image", async function (req, res) {
+  // the variable lastEntry refers to the createdAt column in our DB based upon the specific user ID wihhin the scope of our user session
   var lastEntry = await getLastEntry(req.session.user.id);
+  // await fuction makes sure the lastEntry variable is populated with the function (data) from getLastEntry
+
   console.log(lastEntry.createdAt);
+  // The DB is then probed for an update in the daily_history table at the column index of memomry_image, updating that column with the sent back data which is a url string (req.body.memory_image).
   db.daily_history
     .update(
       {
@@ -68,29 +83,7 @@ router.post("/image", async function (req, res) {
     });
 });
 
-router.get("/home", async function (req, res) {
-  var lastEntry = await getLastEntry(req.session.user.id);
-  db.daily_history
-    .findOne({
-      where: {
-        createdAt: lastEntry.createdAt,
-      },
-      include: [db.user_data],
-    })
-    .then((data) => {
-      console.log(
-        data.dataValues.user_datum.dataValues.first_name,
-        "!!!!!!!!!!!!!!!!!!"
-      );
-      const hbsObj = {
-        histories: data.dataValues,
-        users: data.dataValues.user_datum.dataValues,
-      };
-
-      res.render("userHome", hbsObj);
-    });
-});
-
+//returns createdAt clou
 function getLastEntry(data) {
   return new Promise((resolve, reject) => {
     db.daily_history

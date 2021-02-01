@@ -21,32 +21,52 @@ router.get("/create", (req, res) => {
   });
 });
 
-router.get("/home", function (req, res) {
-  db.user_data
+router.get("/home", async function (req, res) {
+  var lastEntry = await getLastEntry(req.session.user.id);
+  db.daily_history
     .findOne({
       where: {
-        id: req.session.user.id,
+        createdAt: lastEntry.createdAt,
       },
-      include: [db.daily_history],
+      include: [db.user_data],
     })
     .then((data) => {
-      // console.log(data, "00000000000000000000");
-      // const jsonData = data.map((obj) => {
-      //   const jsonObj = obj.toJSON();
+      console.log(
+        data.dataValues.user_datum.dataValues.first_name,
+        "!!!!!!!!!!!!!!!!!!"
+      );
+      const hbsObj = {
+        histories: data.dataValues,
+        users: data.dataValues.user_datum.dataValues,
+      };
 
-      //   return jsonObj;
-      // });
-
-      // console.log(data.first_name);
-      // var object = {
-      //   horoscope: jsonData,
-      // };
-      res.render("userHome");
+      res.render("userHome", hbsObj);
     });
 });
 
 router.get("/review", function (req, res) {
   res.render("userHome2");
 });
+
+//returns createdAt clou
+function getLastEntry(data) {
+  return new Promise((resolve, reject) => {
+    db.daily_history
+      .findAll(
+        {
+          where: {
+            userDatumId: data,
+          },
+        },
+        {
+          limit: 1,
+          order: [["createdAt", "DESC"]],
+        }
+      )
+      .then((data) => {
+        resolve(data[0]);
+      });
+  });
+}
 
 module.exports = router;
