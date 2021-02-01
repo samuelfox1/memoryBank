@@ -48,6 +48,7 @@ router.post("/login", (req, res) => {
             user_name: userData.user_name,
           };
           // if user_name and password strings from the front end match the strings in the data base then a response of userData. Now send a response containing the new ROW data for that user.
+          console.log(userData);
           res.json(userData);
         } else {
           // password no match
