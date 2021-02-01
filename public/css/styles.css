@@ -16,6 +16,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 4vw;
+}
+
+#title {
+  color: black;
+  text-align: center;
+  margin-top: 2%;
+  /* font-style: italic; */
+  font-family: "apple chancery";
 }
 
 .containerDiv {
@@ -106,7 +115,12 @@
 
 .nav-wrapper {
   padding-left: 2vw;
-  background-color: rgb(245, 125, 78);
+  background-color:white;
+}
+
+.dropdown-trigger, .material-icons {
+  color: black;
+  
 }
 
 #hororscopeForDay,
@@ -124,7 +138,8 @@
 
 #memory,
 #submit {
-  background-color: rgb(245, 125, 78);
+  
+  margin-bottom: 2vw;
 }
 
 #editButton {
