@@ -9,25 +9,22 @@ $("#memory").on("click", function () {
 
 $("#submit").on("click", function (event) {
   event.preventDefault();
-  $.post("api/entries", {
+  $.post("/home", {
     // memory_image: $("#memory_image").val(),
     journal_entry: $("#journal_entry").val(),
   })
     .then((data) => {
       console.log("saved entry");
-      window.location.href = "/history";
     })
     .fail((err) => {
       console.log("error");
-      console.log(err);
-      alert("eat my dust");
     });
 });
 
 //widget button click on userhome handlebars
 $("#upload_widget").on("click"),
   function (event) {
-    event.preventDefualt();
+    event.preventDefault();
     // sending a post request to backend containg the
     $.post("");
   };
