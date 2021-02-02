@@ -59,6 +59,8 @@ module.exports = function (sequelize, DataTypes) {
   user_data.associate = function (models) {
     // add associations here
     user_data.hasMany(models.daily_history);
+    //TODO: user has many following?
+    user_data.belongsToMany(models.user_data, { through: "following" });
   };
 
   user_data.beforeCreate(function (user_data) {
