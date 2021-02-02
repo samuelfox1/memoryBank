@@ -5,46 +5,77 @@
     <li><a id="signout" href="/">Logout</a></li>
 </ul>
 <nav>
-    <div class="nav-wrapper">
-        <a href="/home" class="brand-logo"> <i class="material-icons">home</i></a>
-         
-        <ul class="right hide-on-med-and-down">
 
-            <!-- Dropdown Trigger -->
-            <li>
-                <a class="dropdown-trigger" href="/home" data-target="dropdown1">
-                    <i class="material-icons right">dehaze</i></a>
-            </li>
-        </ul>
+    <div class="nav-wrapper">
+        <div class="row">
+
+            <div class="col s4">
+                <a href="/home" class="brand-logo" id="title">MemoryBank</a>
+            </div>
+
+            {{!-- <div class="col s4">
+                <h2 id="title">Memorybank</h2>
+            </div> --}}
+
+            <div class="col s4">
+                <nav>
+                    <div class="nav-wrapper">
+                        <form id="searchBar" action="/history">
+                            <div class="input-field">
+                                <input id="search" type="search" placeholder="Search to find others" required>
+                                <label class="label-icon" for="search">
+                                    <i class="material-icons" id="searchIcon">search</i></label>
+                                <i class="material-icons" id="closeButton">close</i>
+
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+
+            {{!-- Able to add a redirect to the search button, but not a function --}}
+            {{!-- How do we want the search function to work? Should it be able to find people based off of both username and actual name? Should there be a "find friends" area? How would we decide which users to recommend if we did that? --}}
+
+            <div class="col s4">
+                <ul class="right hide-on-med-and-down">
+
+                    <!-- Dropdown Trigger -->
+                    <li>
+                        <a class="dropdown-trigger" href="/home" data-target="dropdown1">
+                            <i class="material-icons right">dehaze</i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </nav>
 
-<div class="container welcomeContainer" >
-<div class="row">
-    <div class="col s10">
-<h1 id="welcomeH1">Welcome {{users.first_name}}</h1>
-    </div>
-    <div class="col s2">
-<div class="row">
-    <div class="col s12">
-<div class="switch">
-    <label>
-      
-      <input type="checkbox">
-      <span class="lever"></span>
-    
-    </label>
-    </div>
-    </div>
-</div>
+<div class="container welcomeContainer">
+    <div class="row">
+        <div class="col s10">
+            <h1 id="welcomeH1">Welcome {{users.first_name}}</h1>
+        </div>
+        <div class="col s2">
+            <div class="row">
+                <div class="col s12">
+                    <div class="switch">
+                        <label>
 
+                            <input type="checkbox" id="mode">
+                            <span class="lever"></span>
+
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
-    
 
- 
 
-  
+
+
+
     <div id="hororscopeForDay">
         <h3>{{users.sign}} </h3>
         <p>{{histories.description}}</p>
@@ -56,8 +87,10 @@
         <p>Lucky Time: {{histories.lucky_time}}</p>
         <p>Sign Compatibility: {{histories.compatibility}}</p>
         <p>Mood: {{histories.mood}}</p>
-        
+
     </div>
+
+
     <br>
     <br>
     <br>
@@ -100,6 +133,35 @@
                 myWidget.open();
             }, false);
 
+            //document.addEventListener("keyup", function (event) {
+            //    if (event.keyCode === 13) {
+            //        event.preventDefault();
+            //        document.getElementById("searchIcon").click()
+            //    }
+           // })
+
+
+
+            //document.getElementById("searchBar").onsubmit(function () {
+           //     alert("HEHEHE")
+           // })
+
+           // const searchUsers = document.getElementById("searchBar")
+
+           // searchUsers.addEventListener("keyup", function (event) {
+           //     if (event.keyCode === 13) {
+          //          event.preventDefault();
+          //          document.getElementById("searchIcon").click()
+          //      }
+         //   })
+
+           // function trialFunction() {
+
+           //     if (event.keyCode === 13) {
+           //         event.preventDefault();
+            //        document.getElementById("searchIcon").click()
+           //     }
+           // }
 
 
 
@@ -107,20 +169,57 @@
 
     </div>
     <p>{{histories.memory_image}}</p>
+    <br>
+
+    {{!-- <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea" rows="3" cols="80"></textarea>
+                    <label for="textarea1">Write your Journal Entry Here!</label>
+                </div>
+            </div>
+        </form>
+    </div> --}}
+
+
+
+    {{!-- on the review page, you should use a key for the value so that it's set to whatever they set it to when they submitted it --}}
+
+    {{!-- Should also add approximately this code in your JS (may have to tweek it a bit)
+        $("#public_status").on('change', function() {
+            if ($(this).is(':checked')) {
+                $(this).attr('value', 'true');
+            } else {
+                $(this).attr('value', 'false');
+            } --}}
+    {{!-- TODO: COmbine these two --}}
+
+
+
+
+
+    <div id="submitButton">
         <div class="row">
-      <form class="col s12">
-        
-        <div class="row">
-          <div class="input-field col s12">
-            <textarea id="journal_entry" class="materialize-textarea" data-length="300"></textarea>
-            <label for="textarea2">Daily Entry</label>
-          </div>
+            <form class="col s12">
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="journal_entry" class="materialize-textarea" data-length="300"></textarea>
+                        <label for="textarea2">Daily Entry</label>
+                    </div>
+                </div>
+                <div id="pubPriv">
+                    <label> <input type="checkbox" class="filled-in" name="public_status" id="public_status"
+                            value="false"><span>Check the box to
+                            make this post public</span></label>
+                </div>
+                <div id="submitButton">
+                    <a class="waves-effect waves-light btn" id="submit">Submit</a>
+                </div>
+            </form>
         </div>
-        <div id="submitButton">
-        <a class="waves-effect waves-light btn" id="submit">Submit</a>
+
+
     </div>
-      </form>
-    </div>
-     
-    
 </div>

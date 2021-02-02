@@ -16,6 +16,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 4vw;
+}
+
+#title {
+  color: black;
+  text-align: center;
+
+  /* font-style: italic; */
+  font-family: "apple chancery";
 }
 
 .containerDiv {
@@ -104,12 +113,25 @@
   margin: 0%;
   margin-top: 5%;
   text-align: center;
+}
+
+.historyContainer {
+  border: 1px solid black;
+  height: 100vh;
+  background-color: white;
+  margin-top: 2vw;
   font-family: "Dancing Script", cursive;
 }
 
 .nav-wrapper {
   padding-left: 2vw;
-  background-color: #26a69a;
+  background-color:white;
+
+}
+
+.dropdown-trigger, .material-icons {
+  color: black;
+  
 }
 
 #historyContainer {
@@ -135,7 +157,8 @@
 
 #memory,
 #submit {
-  background-color: rgb(245, 125, 78);
+  
+  margin-bottom: 2vw;
 }
 
 #editButton {
@@ -153,6 +176,8 @@
 
 .welcomeContainer {
   background: white;
+  margin-top: 2vw;
+  padding-top: 0;
 }
 
 /* SWITCH MODE */
@@ -182,6 +207,16 @@
   height: 10vh;
 }
 
+
+#pubPriv {
+  text-align: center;
+  padding-bottom: 2vw;
+}
+
+/* #search {
+  color: white;
+  background-color: black;
+} */
 /* Cards */
 .card-row {
   margin: 0 auto;
