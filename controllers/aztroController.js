@@ -4,7 +4,7 @@ const db = require("../models");
 // Require 'request npm package'
 const request = require("request");
 require("dotenv").config();
-// Settings snippet for the aztro api call
+
 var userSign = "";
 
 const horoscope = [];
@@ -84,6 +84,7 @@ function getLastEntryDate(data) {
 }
 
 function makeApiRequest(data) {
+  // Settings snippet for the aztro api call
   var options = {
     method: "POST",
     url: "https://sameer-kumar-aztro-v1.p.rapidapi.com/",
@@ -95,12 +96,13 @@ function makeApiRequest(data) {
     },
   };
   return new Promise((resolve, reject) => {
+    // api request snippet for aztro
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
       let aztro = JSON.parse(body);
 
+      //creating a whole new row with column fields to hoold the api data also set the userDatumId of the user
       db.daily_history
-        //creating a whole new row with column fields to hoold the api data also set the userDatumId of the user
         .create({
           color: aztro.color,
           compatibility: aztro.compatibility,

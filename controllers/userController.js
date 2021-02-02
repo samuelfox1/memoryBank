@@ -102,6 +102,8 @@ router.post("/api/journal", async function (req, res) {
     });
 });
 
+
+
 //returns createdAt clou
 function getLastEntry(data) {
   return new Promise((resolve, reject) => {
