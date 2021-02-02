@@ -91,6 +91,12 @@ router.post("/api/find_user", (req, res) => {
 
   db.user_data
     .findAll({
+      // where: {
+      //   [Op.or]: [{ user_name: req.body.find_user }],
+      //   [Op.or]: [{ last_name: req.body.find_user }],
+      //   [Op.or]: [{ sign: req.body.find_user }],
+      //   [Op.or]: [{ email: req.body.find_user }],
+      // },
       where: {
         [Op.or]: [
           { user_name: req.body.find_user },
