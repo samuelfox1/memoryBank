@@ -9,25 +9,22 @@ $("#memory").on("click", function () {
 
 $("#submit").on("click", function (event) {
   event.preventDefault();
-  $.post("api/entries", {
+  $.post("/api/journal", {
     // memory_image: $("#memory_image").val(),
     journal_entry: $("#journal_entry").val(),
   })
     .then((data) => {
       console.log("saved entry");
-      window.location.href = "/history";
     })
     .fail((err) => {
       console.log("error");
-      console.log(err);
-      alert("eat my dust");
     });
 });
 
 //widget button click on userhome handlebars
 $("#upload_widget").on("click"),
   function (event) {
-    event.preventDefualt();
+    event.preventDefault();
     // sending a post request to backend containg the
     $.post("");
   };
@@ -78,6 +75,18 @@ $("#textarea1").val("");
 // } else if () {
 
 //
-$(".css-anf0i3").on("click", function () {
-  console.log("this button works");
+
+$("input:checkbox").change(function () {
+  if ($(this).is(":checked")) {
+    {
+      $(".nav-wrapper").removeClass("navLight").addClass("navDark");
+      $(".container").removeClass("containerLight").addClass("containerDark");
+
+      console.log("dark");
+    }
+  } else {
+    $(".nav-wrapper").removeClass("navDark").addClass("navLight");
+    $(".container").removeClass("containerDark").addClass("containerLight");
+    console.log("light");
+  }
 });
