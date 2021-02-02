@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcrypt");
 
+// /create route that will create the table structure for the datbase and insert the user givin information fro the user on the creation page and apply it into the field columns on that table
 router.post("/create", function (req, res) {
   console.log(req.body.sign, "+++++++++++++++++++");
 
@@ -84,7 +85,7 @@ router.post("/image", async function (req, res) {
     });
 });
 
-//returns createdAt clou
+//returns the most recent entry for the logged in user
 function getLastEntry(data) {
   return new Promise((resolve, reject) => {
     db.daily_history
