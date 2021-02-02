@@ -112,6 +112,8 @@ function makeApiRequest(data) {
           lucky_time: aztro.lucky_time,
           mood: aztro.mood,
           userDatumId: data,
+          memory_image:
+            "https://www.astrologybythebay.com/articles_photos/article-placeholder.jpg",
         })
         .then((data) => {
           resolve(aztro);
