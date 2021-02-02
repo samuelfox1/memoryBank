@@ -99,7 +99,7 @@ function makeApiRequest(data) {
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
       let aztro = JSON.parse(body);
-
+      console.log(aztro);
       db.daily_history
         //creating a whole new row with column fields to hoold the api data also set the userDatumId of the user
         .create({

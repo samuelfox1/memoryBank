@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
-
 //route to check session user info
 router.get("/session", (req, res) => {
   res.json(req.session);
@@ -10,83 +9,131 @@ router.get("/session", (req, res) => {
 
 // const followers = [];
 
-
 router.post("/api/follow/:id", async function (req, res) {
   console.log(req.session);
 
   // search user_data to get list of user id's that i follow
-  let pplIfollow = await getPeopleIFollow(req.session.user.id)
-  console.log(pplIfollow, ".5 FROM DB =====================================")
+  let pplIfollow = await getPeopleIFollow(req.session.user.id);
+  console.log(pplIfollow, ".5 FROM DB =====================================");
 
   //if pplIfollow is null, i havent followed anyone yet
   if (!pplIfollow) {
-
     //turn pplIfollow into an array and add the id from rew.params.id
-    pplIfollow = []
-    pplIfollow.push(req.params.id)
-    console.log(pplIfollow, "1. started from params.id =====================================")
+    pplIfollow = [];
+    pplIfollow.push(req.params.id);
+    console.log(
+      pplIfollow,
+      "1. started from params.id ====================================="
+    );
 
     //if there is data returned from the 'follow' column, parse it into an array and push req.params.id to the array.
   } else {
-    pplIfollow = JSON.parse(pplIfollow)
-    console.log(pplIfollow, "1. JSON PARSE =====================================")
+    pplIfollow = JSON.parse(pplIfollow);
+    console.log(
+      pplIfollow,
+      "1. JSON PARSE ====================================="
+    );
 
-    pplIfollow.push(req.params.id)
-    console.log(pplIfollow, "2. added params =====================================")
+    pplIfollow.push(req.params.id);
+    console.log(
+      pplIfollow,
+      "2. added params ====================================="
+    );
   }
   //stringify the array and save in the 'user_data' table's 'following' column for the active session user
-  db.user_data.update({
-    following: JSON.stringify(pplIfollow)
-  },
-    {
-      where: {
-        Id: req.session.user.id,
+  db.user_data
+    .update(
+      {
+        following: JSON.stringify(pplIfollow),
       },
-    }).then(data => {
+      {
+        where: {
+          Id: req.session.user.id,
+        },
+      }
+    )
+    .then((data) => {
       res.json(data);
-
-    }).catch((err) => {
+    })
+    .catch((err) => {
       res.send(err);
     });
 });
-
 
 router.post("/api/unfollow/:id", async function (req, res) {
   console.log(req.session);
 
   // search user_data to get list of user id's that i follow
-  let pplIfollow = await getPeopleIFollow(req.session.user.id)
-  console.log(pplIfollow, ".5 FROM DB =====================================")
+  let pplIfollow = await getPeopleIFollow(req.session.user.id);
+  console.log(pplIfollow, ".5 FROM DB =====================================");
   //parse the data from the database
-  pplIfollow = JSON.parse(pplIfollow)
-  console.log(pplIfollow, "1. JSON PARSE =====================================")
+  pplIfollow = JSON.parse(pplIfollow);
+  console.log(
+    pplIfollow,
+    "1. JSON PARSE ====================================="
+  );
 
   //search the array to find the index of the 'id' to unfollow.
-  let unfollowIndex
+  let unfollowIndex;
   for (let i = 0; i < pplIfollow.length; i++) {
-    if (pplIfollow[i] === req.params.id) { unfollowIndex = i }
+    if (pplIfollow[i] === req.params.id) {
+      unfollowIndex = i;
+    }
   }
 
   //remove the 'id' from the array by targeting the index position
-  pplIfollow.splice(unfollowIndex, 1)
-  console.log(pplIfollow, "2. updated params =====================================")
+  pplIfollow.splice(unfollowIndex, 1);
+  console.log(
+    pplIfollow,
+    "2. updated params ====================================="
+  );
 
   //stringify the array and save in the 'user_data' table's 'following' column for the active session user
-  db.user_data.update({
-    following: JSON.stringify(pplIfollow)
-  },
-    {
-      where: {
-        Id: req.session.user.id,
+  db.user_data
+    .update(
+      {
+        following: JSON.stringify(pplIfollow),
       },
-    }).then(data => {
+      {
+        where: {
+          Id: req.session.user.id,
+        },
+      }
+    )
+    .then((data) => {
       res.json(data);
     });
-})
+});
 
-
-
-//get the id's of all the people the active session user follows. 
+router.post("/api/follow2/:id", async function (req, res) {
+  console.log(req.session);
+  db.user_data
+    .findOne({ where: { id: req.session.user.id } })
+    .then((dbuser) => {
+      dbuser.addChildren(req.params.id);
+      res.json(dbuser);
+    });
+});
+router.get("/api/follow2/", async function (req, res) {
+  console.log(req.session);
+  db.user_data
+    .findOne({
+      where: {
+        id: req.session.user.id,
+      },
+      include: [
+        { model: db.user_data, as: "Children", include: [db.daily_history] },
+      ],
+    })
+    .then((data) => {
+      // let child = data.getChildren().then((children) => {
+      //   console.log(children);
+      // });
+      // console.log(child);
+      res.json(data);
+    });
+});
+//get the id's of all the people the active session user follows.
 
 function getPeopleIFollow(x) {
   return new Promise((resolve, reject) => {
@@ -95,13 +142,14 @@ function getPeopleIFollow(x) {
         where: {
           Id: x,
         },
-      }).then((data) => {
-        resolve(data.following)
-      }).catch((err) => {
+      })
+      .then((data) => {
+        resolve(data.following);
+      })
+      .catch((err) => {
         res.status(500).send(err);
       });
-  })
+  });
 }
-
 
 module.exports = router;

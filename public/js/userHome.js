@@ -4,7 +4,7 @@ $("#textarea1").val("New Text");
 // M.textareaAutoResize($("#textarea1"));
 
 $("#memory").on("click", function () {
-    alert("Button works");
+  alert("Button works");
 });
 
 // const searchUsers = document.getElementById("search")
@@ -40,40 +40,40 @@ $("#memory").on("click", function () {
 // })
 
 $("#submit").on("click", function (event) {
-    event.preventDefault();
-    $.post("/api/journal", {
-        // memory_image: $("#memory_image").val(),
-        journal_entry: $("#journal_entry").val(),
+  event.preventDefault();
+  $.post("/api/journal", {
+    // memory_image: $("#memory_image").val(),
+    journal_entry: $("#journal_entry").val(),
+  })
+    .then((data) => {
+      console.log("saved entry");
     })
-        .then((data) => {
-            console.log("saved entry");
-        })
-        .fail((err) => {
-            console.log("error");
-        });
+    .fail((err) => {
+      console.log("error");
+    });
 });
 
 $("#searchIcon").on("click", function (event) {
-    event.preventDefault();
-    $.post("/api/find_user", {
-        find_user: $("#search").val(),
+  event.preventDefault();
+  $.post("/api/find_user", {
+    find_user: $("#search").val().trim(),
+  })
+    .then((data) => {
+      console.log(data);
+      // window.location.href = `/search`;
     })
-        .then((data) => {
-            console.log(data)
-        })
-        .fail((err) => {
-            console.log(err)
-        })
-
-})
+    .fail((err) => {
+      console.log(err);
+    });
+});
 
 //widget button click on userhome handlebars
 $("#upload_widget").on("click"),
-    function (event) {
-        event.preventDefault();
-        // sending a post request to backend containg the
-        $.post("");
-    };
+  function (event) {
+    event.preventDefault();
+    // sending a post request to backend containg the
+    $.post("");
+  };
 
 // TODO: Figure out if you have to rewrite the api/entries thing above to be something else
 
@@ -96,15 +96,15 @@ $("#upload_widget").on("click"),
 // })
 
 $("#edit").on("click", function (event) {
-    event.preventDefault();
-    const textInput = $("#textarea1").val();
-    console.log(textInput);
-    window.location.href = "/history";
-    alert("Update successfully!");
+  event.preventDefault();
+  const textInput = $("#textarea1").val();
+  console.log(textInput);
+  window.location.href = "/history";
+  alert("Update successfully!");
 });
 
 $("#delete").on("click", function () {
-    alert("Button works");
+  alert("Button works");
 });
 
 $("#textarea1").val("");
@@ -123,19 +123,16 @@ $("#textarea1").val("");
 //
 
 $("#mode").change(function () {
-    if ($(this).is(":checked")) {
-        {
-            $(".nav-wrapper").removeClass("navLight").addClass("navDark");
-            $(".container").removeClass("containerLight").addClass("containerDark");
+  if ($(this).is(":checked")) {
+    {
+      $(".nav-wrapper").removeClass("navLight").addClass("navDark");
+      $(".container").removeClass("containerLight").addClass("containerDark");
 
-            console.log("dark");
-        }
-    } else {
-        $(".nav-wrapper").removeClass("navDark").addClass("navLight");
-        $(".container").removeClass("containerDark").addClass("containerLight");
-        console.log("light");
+      console.log("dark");
     }
+  } else {
+    $(".nav-wrapper").removeClass("navDark").addClass("navLight");
+    $(".container").removeClass("containerDark").addClass("containerLight");
+    console.log("light");
+  }
 });
-
-
-
