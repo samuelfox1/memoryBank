@@ -53,6 +53,20 @@ $("#submit").on("click", function (event) {
         });
 });
 
+$("#searchIcon").on("click", function (event) {
+    event.preventDefault();
+    $.post("/api/find_user", {
+        find_user: $("#search").val(),
+    })
+        .then((data) => {
+            console.log(data)
+        })
+        .fail((err) => {
+            console.log(err)
+        })
+
+})
+
 //widget button click on userhome handlebars
 $("#upload_widget").on("click"),
     function (event) {
@@ -122,3 +136,6 @@ $("#mode").change(function () {
         console.log("light");
     }
 });
+
+
+
