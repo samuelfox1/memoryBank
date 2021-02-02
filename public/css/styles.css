@@ -2,7 +2,7 @@
   background: url("https://wallpaperaccess.com/full/1113864.jpg");
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
 }
 /* Default styling for header and h1 */
 .defaultHeader {
@@ -98,18 +98,24 @@
 
 /* History page */
 #history-header {
+  color: black;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin: 0%;
+  margin-top: 5%;
   text-align: center;
-}
-
-.historyContainer {
-  border: 1px solid black;
-  height: 100vh;
-  background-color: white;
+  font-family: "Dancing Script", cursive;
 }
 
 .nav-wrapper {
   padding-left: 2vw;
   background-color: #26a69a;
+}
+
+#historyContainer {
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.349);
+  margin-bottom: 10%;
 }
 
 /* User homepage */
@@ -174,4 +180,21 @@
   justify-content: center;
   align-items: center;
   height: 10vh;
+}
+
+/* Cards */
+.card-row {
+  margin: 0 auto;
+}
+.card-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.card {
+  width: 300px;
+}
+
+.card-title {
+  font-size: 15px !important;
 }
