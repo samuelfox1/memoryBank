@@ -46,32 +46,49 @@
     </div>
   </div>
 </nav>
+<<<<<<< HEAD
 <div class="container historyContainer">
+=======
+
+<div class="container historyContainer" id="historyContainer">
+>>>>>>> dev
   <h1 id="history-header">History Page</h1>
   <!-- #each to create new row and column displaying date -->
-  <div class="row history-row">
-    <div class="column s12">
-      <div class="historydate">
-        {{#each histories}}
-        <p>{{lucky_number}}</p>
+  
+        
+  <div class="row card-row">
+  <div class="col s12">
+<div class="card-div">
 
-        {{/each}}
-        <a href="#!">inject date {{histories.lucky_number}}</a>
+ {{#each histories}}
+      <div class="card small">
+        <div class="card-image">
+          <img src={{memory_image}}>
+          <span class="card-title">{{createdAt}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{users.first_name}}</p>
+          <p>Horoscope: 
+          <br>{{description}}</p>
+          <hr>
+          <p>Entry: 
+            <br>
+            {{journal_entry}}</p>
+        </div>
+        <div class="card-action">
+          <a  class= "viewMore" id = "viewMore" href="#">View More</a>
+          <a  class="viewLess hide" id = "viewLess" href="#">View Less</a>
+        </div>
+      </div>
+    {{/each}} 
+    </div> 
+    </div>
+    </div>
+  
+      
+        
       </div>
     </div>
   </div>
-  <div class="row history-row">
-    <div class="column s12">
-      <div class="historydate">
-        <p>1/27/2021</p>
-      </div>
-    </div>
-  </div>
-  <div class="row history-row">
-    <div class="column s12">
-      <div class="historydate">
-        <p>1/26/2021</p>
-      </div>
-    </div>
-  </div>
+  
 </div>
