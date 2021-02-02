@@ -47,20 +47,20 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 140],
       },
     },
-    // following: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1, 140],
-    //   },
-    // },
+    following: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
 
   user_data.associate = function (models) {
     // add associations here
     user_data.hasMany(models.daily_history);
     //TODO: user has many following?
-    user_data.belongsToMany(models.user_data, { through: "following" });
+    // user_data.belongsToMany(user_data, {
+    //   as: "Children",
+    //   through: "following",
+    // });
   };
 
   user_data.beforeCreate(function (user_data) {

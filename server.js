@@ -51,10 +51,12 @@ const frontEndRoutes = require("./controllers/frontEndController");
 app.use(frontEndRoutes);
 const aztroRoutes = require("./controllers/aztroController");
 app.use(aztroRoutes);
+const followingRoutes = require("./controllers/followingController");
+app.use(followingRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
