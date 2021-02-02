@@ -7,7 +7,6 @@ require("dotenv").config();
 // Settings snippet for the aztro api call
 var userSign = "";
 
-const horoscope = [];
 
 // Big picture of what this call is trying to do is create ONE DAY INSTANCE of data retreval from the api for each individual user based on there unique id and passing thier sign as the query term for the API.
 
@@ -23,12 +22,8 @@ router.get("/api/aztro/:id/:sign", async function (req, res) {
   if (today != lastEntry) {
     //make the api request5
     var aztro = await makeApiRequest(req.params.id);
-    //clear contents of array
-    horoscope.length = 0;
-    // push api results into array
-    horoscope.push(aztro);
     //send the results back to client
-    res.json(horoscope);
+    res.json(aztro);
   } else {
     //send the stored results back to the frontend
     console.log("todays data already exists");
