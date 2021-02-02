@@ -63,7 +63,7 @@
             <span class="card-title">{{createdAt}}</span>
           </div>
           <div class="card-content">
-            <p>{{users.first_name}}</p>
+            <p>{{user_datum.first_name}}</p>
             <p>Horoscope:
               <br>{{description}}</p>
             <hr>
@@ -75,15 +75,14 @@
             <a class="viewMore" id="viewMore" href="#">View More</a>
             <a class="viewLess hide" id="viewLess" href="#">View Less</a>
           </div>
+          {{/each}}
         </div>
-        {{/each}}
       </div>
     </div>
+
+
+
   </div>
-
-
-
-</div>
 </div>
 </div>
 
