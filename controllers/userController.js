@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcrypt");
 
+// /create route that will create the table structure for the datbase and insert the user givin information fro the user on the creation page and apply it into the field columns on that table
 router.post("/create", function (req, res) {
   console.log(req.body.sign, "+++++++++++++++++++");
 
