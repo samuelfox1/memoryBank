@@ -1,3 +1,5 @@
+var public = false
+
 $(".dropdown-trigger").dropdown();
 
 $("#textarea1").val("New Text");
@@ -44,13 +46,18 @@ $("#submit").on("click", function (event) {
     $.post("/api/journal", {
         // memory_image: $("#memory_image").val(),
         journal_entry: $("#journal_entry").val(),
+        public_status: public
     })
         .then((data) => {
             console.log("saved entry");
+            public = false
+            window.location.href = "/home"
         })
         .fail((err) => {
             console.log("error");
+            public = false
         });
+
 });
 
 $("#searchIcon").on("click", function (event) {
@@ -137,5 +144,15 @@ $("#mode").change(function () {
     }
 });
 
+$("#public_status").change(function () {
+    if ($(this).is(":checked")) {
+        {
+            public = true
+        }
+    } else {
+        public = false
+    }
+    console.log(public)
+});
 
 

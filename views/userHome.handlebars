@@ -205,13 +205,14 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="journal_entry" class="materialize-textarea" data-length="300"></textarea>
+                        <textarea id="journal_entry" class="materialize-textarea"
+                            data-length="300">{{histories.journal_entry}}</textarea>
                         <label for="textarea2">Daily Entry</label>
                     </div>
                 </div>
                 <div id="pubPriv">
-                    <label> <input type="checkbox" class="filled-in" name="public_status" id="public_status"
-                            value="false"><span>Check the box to
+                    <label class="label"> <input type="checkbox" class="filled-in" name="public_status"
+                            id="public_status" value=><span>Check the box to
                             make this post public</span></label>
                 </div>
                 <div id="submitButton">
@@ -219,6 +220,8 @@
                 </div>
             </form>
         </div>
+
+
 
 
     </div>
