@@ -13,7 +13,7 @@ const horoscope = [];
 
 //Recieving a get request on front end containg a route string (/api/aztro/3/Leo)
 router.get("/api/aztro/:id/:sign", async function (req, res) {
-  console.log(req.params.sign, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  (req.params.sign, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   userSign = req.params.sign;
   // when the get request is made...
   // get todays date,
@@ -33,7 +33,7 @@ router.get("/api/aztro/:id/:sign", async function (req, res) {
   } else {
     //send the stored results back to the frontend
     console.log("todays data already exists");
-    console.log(req.session.user);
+    (req.session.user);
     res.json(req.session.user);
   }
 });
@@ -86,8 +86,8 @@ function getLastEntryDate(data) {
 }
 
 function makeApiRequest(data) {
-  console.log(data, "++++++++++++++++++++++++++++++++");
-  console.log(userSign, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  (data, "++++++++++++++++++++++++++++++++");
+  (userSign, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   var options = {
     method: "POST",
     url: "https://sameer-kumar-aztro-v1.p.rapidapi.com/",
@@ -117,7 +117,7 @@ function makeApiRequest(data) {
           userDatumId: data,
         })
         .then((data) => {
-          console.log("line 85");
+          ("line 85");
           resolve(aztro);
         });
     });
