@@ -2,12 +2,11 @@
 <ul id="dropdown1" class="dropdown-content">
     <li><a id="history" href="/history">History</a></li>
     <li><a id="feed" href="#!">Feed</a></li>
-    <li><a id="signout" href="/">Logout</a></li>
+    <li><a id="signout" href="/">Signout</a></li>
 </ul>
 <nav>
     <div class="nav-wrapper">
         <a href="/home" class="brand-logo"> <i class="material-icons">home</i></a>
-         
         <ul class="right hide-on-med-and-down">
 
             <!-- Dropdown Trigger -->
@@ -18,45 +17,20 @@
         </ul>
     </div>
 </nav>
+<div class="container" id="welcomeContainer">
 
-<div class="container welcomeContainer" >
-<div class="row">
-    <div class="col s10">
-<h1 id="welcomeH1">Welcome {{users.first_name}}</h1>
-    </div>
-    <div class="col s2">
-<div class="row">
-    <div class="col s12">
-<div class="switch">
-    <label>
-      
-      <input type="checkbox">
-      <span class="lever"></span>
-    
-    </label>
-    </div>
-    </div>
-</div>
+    <h1 id="welcomeH1">Welcome {{users.first_name}}</h1>
 
-    </div>
-</div>
-    
-
- 
-
-  
     <div id="hororscopeForDay">
-        <h3>{{users.sign}} </h3>
+        <p>Today's Date and Horrorscope. Placeholder text below</p>
         <p>{{histories.description}}</p>
     </div>
 
     <div id="otherLuckyInfo">
-        <p>Lucky Color: {{histories.color}}</p>
-        <p>Lucky Number: {{histories.lucky_number}}</p>
-        <p>Lucky Time: {{histories.lucky_time}}</p>
-        <p>Sign Compatibility: {{histories.compatibility}}</p>
-        <p>Mood: {{histories.mood}}</p>
-        
+        <p>Lucky color, lucky number, lucky time, compatibility with other signs. Placeholder text below</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur pariatur perspiciatis deleniti debitis
+            distinctio maxime minus iure, impedit placeat voluptate quia eius nulla unde vel ex incidunt temporibus
+            repellendus excepturi.</p>
     </div>
     <br>
     <br>
@@ -74,53 +48,38 @@
                 uploadPreset: 'awfcnrld'
             }, (error, result) => {
                 if (!error && result && result.event === "success") {
-                    console.log('Done! Here is the image info: ', result.info.secure_url);
-
                     //Cloudinary sends a post request to the /image route to the backend containg a string of data containg the image url to cloudinary
-                    $.post("/api/image", {
+                    $.post("/image", {
                         memory_image: result.info.secure_url
+                    }).then((data) => {
+                        location.reload()
+                    }).fail((err) => {
+                        console.log(err)
                     })
-
-
-                        .then((data) => {
-                            console.log(data, "saved image")
-                            location.reload()
-                        })
-                        .fail((err) => {
-                            console.log(err)
-                        })
-
-
-
                 }
-            }
-            )
+            });
 
             document.getElementById("upload_widget").addEventListener("click", function () {
                 myWidget.open();
             }, false);
-
-
-
-
         </script>
 
     </div>
     <p>{{histories.memory_image}}</p>
-        <div class="row">
-      <form class="col s12">
-        
-        <div class="row">
-          <div class="input-field col s12">
-            <textarea id="journal_entry" class="materialize-textarea" data-length="300"></textarea>
-            <label for="textarea2">Daily Entry</label>
-          </div>
-        </div>
-        <div id="submitButton">
+    <br>
+
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea" rows="3" cols="80"></textarea>
+                    <label for="textarea1">Write your Journal Entry Here!</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="submitButton">
         <a class="waves-effect waves-light btn" id="submit">Submit</a>
     </div>
-      </form>
-    </div>
-     
-    
 </div>

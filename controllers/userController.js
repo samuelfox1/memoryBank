@@ -4,7 +4,6 @@ const db = require("../models");
 const bcrypt = require("bcrypt");
 
 router.post("/create", function (req, res) {
-  console.log(req.body.sign, "+++++++++++++++++++");
 
   db.user_data
     .create({
@@ -48,7 +47,6 @@ router.post("/login", (req, res) => {
             user_name: userData.user_name,
           };
           // if user_name and password strings from the front end match the strings in the data base then a response of userData. Now send a response containing the new ROW data for that user.
-          console.log(userData);
           res.json(userData);
         } else {
           // password no match
@@ -65,7 +63,6 @@ router.post("/api/image", async function (req, res) {
   var lastEntry = await getLastEntry(req.session.user.id);
   // await fuction makes sure the lastEntry variable is populated with the function (data) from getLastEntry
 
-  console.log(lastEntry.createdAt);
   // The DB is then probed for an update in the daily_history table at the column index of memomry_image, updating that column with the sent back data which is a url string (req.body.memory_image).
   db.daily_history
     .update(
@@ -79,7 +76,6 @@ router.post("/api/image", async function (req, res) {
       }
     )
     .then((data) => {
-      console.log(data, "!!!!!!!!!!!!!!!!!!");
       res.send("updated");
     });
 });
@@ -89,7 +85,6 @@ router.post("/api/journal", async function (req, res) {
   var lastEntry = await getLastEntry(req.session.user.id);
   // await fuction makes sure the lastEntry variable is populated with the function (data) from getLastEntry
 
-  console.log(lastEntry.createdAt);
   // The DB is then probed for an update in the daily_history table at the column index of memomry_image, updating that column with the sent back data which is a url string (req.body.memory_image).
   db.daily_history
     .update(
@@ -103,7 +98,6 @@ router.post("/api/journal", async function (req, res) {
       }
     )
     .then((data) => {
-      console.log(data, "!!!!!!!!!!!!!!!!!!");
       res.send("journal updated");
     });
 });

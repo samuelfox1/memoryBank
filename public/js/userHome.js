@@ -17,7 +17,7 @@ $("#submit").on("click", function (event) {
       console.log("saved entry");
     })
     .fail((err) => {
-      console.log("error");
+      console.log(err);
     });
 });
 
