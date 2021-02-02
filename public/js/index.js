@@ -1,4 +1,4 @@
-console.log("hi");
+("hi");
 
 const homeLoginBtn = $("#loginBtn");
 const homeCreateBtn = $("#createBtn");

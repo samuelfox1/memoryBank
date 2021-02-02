@@ -11,6 +11,7 @@ router.get("/", function (req, res) {
 
 // /login route to go to login page
 router.get("/login", function (req, res) {
+
   res.render("login", {
     user: req.session.user,
   });
@@ -35,10 +36,7 @@ router.get("/home", async function (req, res) {
       include: [db.user_data],
     })
     .then((data) => {
-      console.log(
-        data.dataValues.user_datum.dataValues.first_name,
-        "!!!!!!!!!!!!!!!!!!"
-      );
+
       const hbsObj = {
         histories: data.dataValues,
         users: data.dataValues.user_datum.dataValues,
@@ -50,7 +48,7 @@ router.get("/home", async function (req, res) {
 
 // /history route that the user can visit once logged in from the burger bar in the top right to view past entries order by most recent day
 router.get("/history", function (req, res) {
-  console.log(req.session.user.id);
+  (req.session.user.id);
   db.daily_history
     .findAll({
       where: {

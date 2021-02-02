@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 
 // /create route that will create the table structure for the datbase and insert the user givin information fro the user on the creation page and apply it into the field columns on that table
 router.post("/create", function (req, res) {
-  console.log(req.body.sign, "+++++++++++++++++++");
+  req.body.sign, "+++++++++++++++++++";
 
   db.user_data
     .create({
@@ -49,7 +49,7 @@ router.post("/login", (req, res) => {
             user_name: userData.user_name,
           };
           // if user_name and password strings from the front end match the strings in the data base then a response of userData. Now send a response containing the new ROW data for that user.
-          console.log(userData);
+          userData;
           res.json(userData);
         } else {
           // password no match
@@ -66,7 +66,7 @@ router.post("/api/image", async function (req, res) {
   var lastEntry = await getLastEntry(req.session.user.id);
   // await fuction makes sure the lastEntry variable is populated with the function (data) from getLastEntry
 
-  console.log(lastEntry.createdAt);
+  lastEntry.createdAt;
   // The DB is then probed for an update in the daily_history table at the column index of memomry_image, updating that column with the sent back data which is a url string (req.body.memory_image).
   db.daily_history
     .update(
@@ -80,7 +80,7 @@ router.post("/api/image", async function (req, res) {
       }
     )
     .then((data) => {
-      console.log(data, "!!!!!!!!!!!!!!!!!!");
+      data, "!!!!!!!!!!!!!!!!!!";
       res.send("updated");
     });
 });
@@ -110,6 +110,13 @@ router.post("/api/journal", async function (req, res) {
 });
 
 //returns createdAt clou
+//route to destroy active session cookie
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.send("logged out");
+});
+
+//returns the most recent entry for the logged in user
 function getLastEntry(data) {
   return new Promise((resolve, reject) => {
     db.daily_history
