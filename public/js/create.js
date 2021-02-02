@@ -7,9 +7,6 @@ function createAccount() {
   // event.preventDefault();
   let sign = $(".zodiacBtn").text().split(" ");
 
-  console.log(sign, "++++++++++++++++");
-
-  console.log($(".zodiacBtn").text(), "++++++++++++++++++++++++++");
   $.post("/create", {
     first_name: $("#first_name").val().trim(),
     last_name: $("#last_name").val().trim(),

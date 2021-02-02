@@ -46,7 +46,6 @@ router.get("/home", async function (req, res) {
 
 // /history route that the user can visit once logged in from the burger bar in the top right to view past entries order by most recent day
 router.get("/history", function (req, res) {
-  req.session.user.id;
   db.daily_history
     .findAll({
       where: {
