@@ -7,16 +7,13 @@ function createAccount() {
   // event.preventDefault();
   let sign = $(".zodiacBtn").text().split(" ");
 
-  console.log(sign, "++++++++++++++++");
-
-  console.log($(".zodiacBtn").text(), "++++++++++++++++++++++++++");
   $.post("/create", {
-    first_name: $("#first_name").val(),
-    last_name: $("#last_name").val(),
-    email: $("#email").val(),
-    user_name: $("#username").val(),
-    password: $("#password").val(),
-    sign: sign[0],
+    first_name: $("#first_name").val().trim(),
+    last_name: $("#last_name").val().trim(),
+    email: $("#email").val().trim(),
+    user_name: $("#username").val().trim(),
+    password: $("#password").val().trim(),
+    sign: sign[0].trim(),
   }).then(function (data) {
     console.log("signed up!");
     window.location.href = "/login";
@@ -25,8 +22,8 @@ function createAccount() {
 
 saveAccountBtn.on("click", function (event) {
   event.preventDefault();
-  const userPw = $("#password").val();
-  const confirmPw = $("#confirmPassword").val();
+  const userPw = $("#password").val().trim();
+  const confirmPw = $("#confirmPassword").val().trim();
   if (userPw === confirmPw) {
     console.log("Passwords match!");
   } else {
