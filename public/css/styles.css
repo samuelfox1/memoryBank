@@ -22,7 +22,7 @@
 #title {
   color: black;
   text-align: center;
-  margin-top: 2%;
+
   /* font-style: italic; */
   font-family: "apple chancery";
 }
@@ -114,11 +114,13 @@
   border: 1px solid black;
   height: 100vh;
   background-color: white;
+  margin-top: 2vw;
 }
 
 .nav-wrapper {
   padding-left: 2vw;
   background-color:white;
+
 }
 
 .dropdown-trigger, .material-icons {
@@ -162,6 +164,8 @@
 
 .welcomeContainer {
   background: white;
+  margin-top: 2vw;
+  padding-top: 0;
 }
 
 /* SWITCH MODE */
@@ -196,3 +200,8 @@
   text-align: center;
   padding-bottom: 2vw;
 }
+
+/* #search {
+  color: white;
+  background-color: black;
+} */
