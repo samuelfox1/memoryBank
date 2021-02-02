@@ -92,6 +92,7 @@ router.post("/api/journal", async function (req, res) {
     .update(
       {
         journal_entry: req.body.journal_entry,
+        public_status: req.body.public_status
       },
       {
         where: {
