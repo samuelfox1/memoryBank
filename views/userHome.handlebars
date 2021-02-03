@@ -1,7 +1,7 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
+    <li><a id="home" href="/home">Home</a></li>
     <li><a id="history" href="/history">History</a></li>
-    <li><a id="feed" href="#!">Feed</a></li>
     <li><a id="signout" href="/">Logout</a></li>
 </ul>
 <nav>
@@ -9,7 +9,7 @@
     <div class="nav-wrapper">
         <div class="row">
 
-            <div class="col s4">
+            <div class="col s3 m4 l4">
                 <a href="/home" class="brand-logo left" id="title">MemoryBank</a>
             </div>
 
@@ -17,7 +17,7 @@
                 <h2 id="title">Memorybank</h2>
             </div> --}}
 
-            <div class="col s4">
+            <div class="col s7 m4 l4">
                 <nav>
                     <div class="nav-wrapper">
                         <form id="searchBar" action="/history">
@@ -38,7 +38,7 @@
             username and actual name? Should there be a "find friends" area? How would we decide which users to
             recommend if we did that? --}}
 
-            <div class="col s4">
+            <div class="col s2 m4 l4">
                 <ul class="right">
 
                     <!-- Dropdown Trigger -->
@@ -54,25 +54,26 @@
 
 <div class="container welcomeContainer">
     <div class="row">
-        <div class="col s9">
+        <div class="col s12">
+            <div class="switch">
+                <label>
+
+                    <input type="checkbox" id="mode">
+                    <span class="lever"></span>
+
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
             <h1 id="welcomeH1">Welcome, {{users.first_name}}</h1>
 
         </div>
-        <div class="col s3">
-            <div class="row">
-                <div class="col s12">
-                    <div class="switch">
-                        <label>
 
-                            <input type="checkbox" id="mode">
-                            <span class="lever"></span>
 
-                        </label>
-                    </div>
-                </div>
-            </div>
 
-        </div>
+
 
     </div>
     <h5>{{histories.createdAt}}</h5>
@@ -89,8 +90,8 @@
         <p>{{histories.description}}</p>
     </div>
 
-    <br>
-    <hr>
+
+
 
 
     <div id="otherLuckyInfo">
@@ -104,8 +105,9 @@
 
 
     <br>
+    <hr>
     <br>
-    <br>
+
 
 
     <div id="imageUpload">
@@ -279,17 +281,28 @@
                 document.getElementById("submit").style.display = "block"
 
             }
-
-           // if (document.getElementById("cloudinaryUpload").src != "") {
-             //   document.getElementById("deletePhoto").style.display = "block"
-            //    // $("#deleteEntry").hidden = false
-          //  } else {
-         //       document.getElementById("deletePhoto").style.display = "none"
-
-          //  }
         </script>
 
 
 
     </div>
+
+    {{!-- <br>
+    <br>
+    <hr id="breakToFeed">
+    <br>
+
+
+    <div id="feed">
+        <h3>Feed</h3>
+        <br>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero voluptas expedita totam, sed rerum ratione
+            repellat veritatis neque. Veritatis, vel pariatur architecto eos laudantium praesentium dolorem fugiat
+            consectetur ut illum.</p>
+        <br>
+        <hr id="feedHr">
+        <br>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse fuga aut molestiae odio nihil nam sapiente
+            placeat suscipit mollitia sint iste architecto quod possimus amet eum repellat ducimus, natus voluptate!</p>
+    </div> --}}
 </div>

@@ -32,7 +32,11 @@ h5 {
 .switch, #mode {
   text-align: right;
 }
-/* TODO: Fix dark mode by referencing this */
+
+.switch {
+  padding-top: 2vw;
+}
+
 #title {
   color: black;
   text-align: left;
@@ -40,6 +44,21 @@ h5 {
   font-family: "apple chancery";
 }
 
+#feed {
+  text-align: center;
+  padding-bottom: 2vw;
+}
+
+#feedHr {
+  width: 60%;
+}
+
+#breakToFeed {
+  width: 90%;
+ height: 2px;
+ color: black;
+ background-color: black;
+}
 
 
 .containerDiv {
@@ -184,6 +203,10 @@ h5 {
   text-align: left;
 }
 
+.clear-btn {
+  background-color: rgb(230, 32, 32);
+}
+
 
 
 .welcomeContainer {
@@ -196,11 +219,12 @@ h5 {
 }
 
 #welcomeH1 {
-  text-align: right;
+  margin-top: 0%;
+  text-align: center;
 }
 
 hr {
-  width: 80%;
+  width: 85%;
 }
 
 #imageUpload{
@@ -323,7 +347,7 @@ hr {
 
 .top-right {
   margin-left: 89%;
-  margin-bottom: 90%;
+  margin-bottom: 105%;
 }
 
 .material-icons {
@@ -360,4 +384,50 @@ hr {
   #follow {
     margin-bottom: 4%;
   }
+
+  #search {
+    font-size: 10px;
+  }
+
+  #title{
+    font-size: 15px;
+  }
+
+  /* body {
+    width: 90vw;
+    overflow-x: hidden;
+  }
+
+  .containerDiv {
+    width: 90%;
+  } */
+
+  /* .body {
+    width: 90vw;
+    overflow-x: hidden;
+  } */
+  #createDiv{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .card-div {
+    width: 60vw;
+    overflow-x: hidden;
+  }
+
+  .card-title {
+    margin-left: 73%;
+    margin-bottom: 53%;
+  }
+
+  .top-right {
+    margin-left: 73%;
+    margin-bottom: 89%;
+  }
+
+  
 }
