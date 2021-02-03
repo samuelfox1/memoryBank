@@ -367,6 +367,10 @@ hr {
   flex-wrap: wrap;
 }
 
+.button-row {
+  margin: 0%;
+}
+
 @media screen and (max-width: 700px) {
   .navbar-css1 {
     display: flex;
