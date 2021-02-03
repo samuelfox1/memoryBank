@@ -53,6 +53,7 @@ router.get("/history", function (req, res) {
         userDatumId: req.session.user.id,
       },
       include: [db.user_data],
+      order: [["createdAt", "DESC"]],
     })
     .then((data) => {
       const jsonData = data.map((obj) => {
@@ -99,6 +100,22 @@ router.post("/api/find_user", (req, res) => {
           { sign: req.body.find_user },
           { email: req.body.find_user },
         ],
+      },
+    })
+    .then((data) => {
+      res.json(data);
+    });
+});
+
+router.post("/api/deleteHistory", (req, res) => {
+  console.log(
+    req.body.id,
+    "FUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUN"
+  );
+  db.daily_history
+    .destroy({
+      where: {
+        id: req.body.id,
       },
     })
     .then((data) => {
