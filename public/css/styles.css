@@ -141,6 +141,9 @@ h5 {
   color: black;
 }
 
+.zodiacBtn {
+  color: white;
+}
 #historyContainer {
   border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.144);
@@ -329,4 +332,32 @@ hr {
 
 .p-entry {
   word-break: break-all;
+}
+
+.follow-card {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}
+#follow-card-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 700px) {
+  .follow-card {
+    width: 80%;
+  }
+  #follow-card-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #follow {
+    margin-bottom: 4%;
+  }
 }
