@@ -19,10 +19,10 @@
   padding-bottom: 4vw;
 }
 
+/* TODO: Fix dark mode by referencing this */
 #title {
   color: black;
   text-align: center;
-
   /* font-style: italic; */
   font-family: "apple chancery";
 }
@@ -123,6 +123,7 @@
   font-family: "Dancing Script", cursive;
 }
 
+
 .nav-wrapper {
   padding-left: 2vw;
   background-color:white;
@@ -145,9 +146,9 @@
 #hororscopeForDay,
 #otherLuckyInfo {
   text-align: center;
-  border: solid;
+  /* border: solid;
   border-width: thin;
-  margin: 1vw;
+  margin: 1vw; */
 }
 
 #uploadArea,
@@ -169,15 +170,56 @@
   text-align: left;
 }
 
-#edit,
-#delete {
-  background-color: rgb(245, 125, 78);
-}
+
 
 .welcomeContainer {
   background: white;
   margin-top: 2vw;
   padding-top: 0;
+}
+
+#welcomeH1 {
+  text-align: right;
+}
+
+hr {
+  width: 80%;
+}
+
+#imageUpload{
+  text-align: center;
+  padding-bottom: 2vw;
+}
+
+#cloudinaryUpload{
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 700px;
+}
+
+#resubmitButton{
+  text-align: right;
+}
+
+#deleteButton{
+  text-align: left;
+}
+
+#upload_picture{
+  text-align: right;
+}
+
+#deleteButton2{
+  text-align: left;
+}
+
+#deleteEntry{
+  background-color: rgb(230, 32, 32);
+}
+
+#deletePhoto{
+  background-color: rgb(230, 32, 32);
 }
 
 /* SWITCH MODE */
@@ -187,7 +229,7 @@
 }
 
 .navLight {
-  background-color: #26a69a;
+  background-color: white;
 }
 
 .containerLight {
@@ -200,12 +242,26 @@
   color: white;
 }
 
+/* .titleDark {
+  color: white;
+}
+
+.titleLight {
+  color: black;
+} */
+
 .test {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 10vh;
 }
+
+
+
+
+
+
 
 
 #pubPriv {

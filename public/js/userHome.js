@@ -41,6 +41,18 @@ $("#memory").on("click", function () {
 //     console.log("HEHEHE")
 // })
 
+$("#public_status").change(function () {
+    if ($(this).is(":checked")) {
+        {
+            public = true
+        }
+    } else {
+        public = false
+    }
+    console.log(public)
+});
+
+
 $("#submit").on("click", function (event) {
     event.preventDefault();
     $.post("/api/journal", {
@@ -59,6 +71,86 @@ $("#submit").on("click", function (event) {
         });
 
 });
+
+$("#resubmit").on("click", function (event) {
+    // if ($("#journal_entry").val() != "") {
+    //     document.getElementById("deleteEntry").style.display = "none"
+    // } else {
+    //     console.log("nothing to resubmit")
+    // }
+
+    event.preventDefault();
+    $.post("/api/journal", {
+        // memory_image: $("#memory_image").val(),
+        journal_entry: $("#journal_entry").val(),
+        public_status: public
+    })
+        .then((data) => {
+            console.log("saved entry");
+            public = false
+            window.location.href = "/home"
+        })
+        .fail((err) => {
+            console.log("error");
+            public = false
+        });
+
+});
+
+// if ($("#journal_entry").val() != "") {
+//     document.getElementById("deleteEntry").style.display = "block"
+//     // $("#deleteEntry").hidden = false
+// } else {
+//     document.getElementById("deleteEntry").style.display = "none"
+//     document.getElementById("deleteEntry").hidden = true
+// }
+
+$("#deleteEntry").on("click", function (event) {
+    event.preventDefault
+    // document.getElementById("deleteEntry").style.display = "none"
+
+    if ($("#journal_entry").val() != "") {
+        console.log("Something was written here")
+        document.getElementById("journal_entry").value = ''
+        // document.getElementById("deleteEntry").style.display = "none"
+
+
+    } else {
+        console.log("nothing written here")
+
+
+    }
+    // might want there to be an "are you sure" confirmation before they can delete
+})
+
+$("#deletePhoto").on("click", function (event) {
+    event.preventDefault
+    // document.getElementById("deletePhoto").style.display = "none"
+    if (document.getElementById("cloudinaryUpload").src != "") {
+        console.log("A photo was here")
+        document.getElementById("cloudinaryUpload").src = ''
+
+
+    } else {
+        console.log("No photo here")
+
+    }
+    // might want there to be an "are you sure" confirmation before they can delete
+})
+
+// function clearEntry() {
+//     console.log($("#journal_entry").val())
+//     $("#journal_entry").val() === ''
+//     document.getElementById("journal_entry").value = ''
+// }
+
+
+// TODO: If statement where if there is text in the daily entry field, hide the submit button and show the other three
+
+console.log($("#journal_entry").val())
+
+
+
 
 $("#searchIcon").on("click", function (event) {
     event.preventDefault();
@@ -110,9 +202,6 @@ $("#edit").on("click", function (event) {
     alert("Update successfully!");
 });
 
-$("#delete").on("click", function () {
-    alert("Button works");
-});
 
 $("#textarea1").val("");
 
@@ -134,25 +223,24 @@ $("#mode").change(function () {
         {
             $(".nav-wrapper").removeClass("navLight").addClass("navDark");
             $(".container").removeClass("containerLight").addClass("containerDark");
+            // $("#title").removeClass("titleLight").addClass("titleDark")
+            $("#title").css('color', 'white')
+            $(".drowdown-trigger").css('color', 'white')
+            $(".material-icons").css('color', 'white')
 
             console.log("dark");
         }
     } else {
         $(".nav-wrapper").removeClass("navDark").addClass("navLight");
         $(".container").removeClass("containerDark").addClass("containerLight");
+        // $("#title").removeClass("titleDark").addClass("titleLight")
+        $("#title").css('color', 'black')
+        $(".drowdown-trigger").css('color', 'black')
+        $(".material-icons").css('color', 'black')
+
         console.log("light");
     }
 });
 
-$("#public_status").change(function () {
-    if ($(this).is(":checked")) {
-        {
-            public = true
-        }
-    } else {
-        public = false
-    }
-    console.log(public)
-});
 
 
