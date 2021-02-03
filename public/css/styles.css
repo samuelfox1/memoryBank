@@ -21,13 +21,26 @@
   padding-bottom: 4vw;
 }
 
+#journal_entry {
+  color: black;
+}
+
+h5 {
+  text-align: center;
+}
+
+.switch, #mode {
+  text-align: right;
+}
+/* TODO: Fix dark mode by referencing this */
 #title {
   color: black;
-  text-align: center;
-
+  text-align: left;
   /* font-style: italic; */
   font-family: "apple chancery";
 }
+
+
 
 .containerDiv {
   margin-top: 10%;
@@ -117,6 +130,7 @@
   font-family: "Dancing Script", cursive;
 }
 
+
 .nav-wrapper {
   padding-left: 2vw;
   background-color: white;
@@ -144,9 +158,9 @@
 #hororscopeForDay,
 #otherLuckyInfo {
   text-align: center;
-  border: solid;
+  /* border: solid;
   border-width: thin;
-  margin: 1vw;
+  margin: 1vw; */
 }
 
 #uploadArea,
@@ -167,15 +181,63 @@
   text-align: left;
 }
 
-#edit,
-#delete {
-  background-color: rgb(245, 125, 78);
-}
+
 
 .welcomeContainer {
-  background: white;
+  background: rgba(255, 255, 255, 0.925);
   margin-top: 2vw;
   padding-top: 0;
+  border-radius: 25px;
+  padding-right: 2vw;
+  padding-left: 2vw;
+}
+
+#welcomeH1 {
+  text-align: right;
+}
+
+hr {
+  width: 80%;
+}
+
+#imageUpload{
+  text-align: center;
+  padding-bottom: 2vw;
+}
+
+#cloudinaryUpload{
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 800px;
+}
+
+#resubmitButton{
+  text-align: right;
+}
+
+#deleteButton{
+  text-align: left;
+}
+
+#upload_widget {
+  background-color: #26a69a;
+}
+
+#upload_picture{
+  text-align: right;
+}
+
+#deleteButton2{
+  text-align: left;
+}
+
+#deleteEntry{
+  background-color: rgb(230, 32, 32);
+}
+
+#deletePhoto{
+  background-color: rgb(230, 32, 32);
 }
 
 /* SWITCH MODE */
@@ -185,18 +247,26 @@
 }
 
 .navLight {
-  background-color: #26a69a;
+  background-color: white;
 }
 
 .containerLight {
-  background: white;
+  background: rgba(255, 255, 255, 0.925);
   color: black;
 }
 
 .containerDark {
-  background: black;
+  background: rgba(0, 0, 0, 0.582);
   color: white;
 }
+
+/* .titleDark {
+  color: white;
+}
+
+.titleLight {
+  color: black;
+} */
 
 .test {
   display: flex;
@@ -204,6 +274,13 @@
   align-items: center;
   height: 10vh;
 }
+
+
+
+
+
+
+
 
 #pubPriv {
   text-align: center;
@@ -243,7 +320,7 @@
 
 .top-right {
   margin-left: 89%;
-  margin-bottom: 45%;
+  margin-bottom: 90%;
 }
 
 .material-icons {

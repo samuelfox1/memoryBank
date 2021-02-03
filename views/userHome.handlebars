@@ -10,7 +10,7 @@
         <div class="row">
 
             <div class="col s4">
-                <a href="/home" class="brand-logo" id="title">MemoryBank</a>
+                <a href="/home" class="brand-logo left" id="title">MemoryBank</a>
             </div>
 
             {{!-- <div class="col s4">
@@ -39,7 +39,7 @@
             recommend if we did that? --}}
 
             <div class="col s4">
-                <ul class="right hide-on-med-and-down">
+                <ul class="right">
 
                     <!-- Dropdown Trigger -->
                     <li>
@@ -54,11 +54,11 @@
 
 <div class="container welcomeContainer">
     <div class="row">
-        <div class="col s10">
+        <div class="col s9">
             <h1 id="welcomeH1">Welcome, {{users.first_name}}</h1>
-            <h5>{{histories.createdAt}}</h5>
+
         </div>
-        <div class="col s2">
+        <div class="col s3">
             <div class="row">
                 <div class="col s12">
                     <div class="switch">
@@ -73,7 +73,9 @@
             </div>
 
         </div>
+
     </div>
+    <h5>{{histories.createdAt}}</h5>
 
 
 
@@ -86,6 +88,10 @@
         <h3>{{users.sign}} </h3>
         <p>{{histories.description}}</p>
     </div>
+
+    <br>
+    <hr>
+
 
     <div id="otherLuckyInfo">
         <p>Lucky Color: {{histories.color}}</p>
@@ -100,11 +106,25 @@
     <br>
     <br>
     <br>
-    <img src={{histories.memory_image}}>
+
+
+    <div id="imageUpload">
+        <img id="cloudinaryUpload" src={{histories.memory_image}}>
+    </div>
+
 
     <div id="uploadArea">
         {{!-- <a class="waves-effect waves-light btn" id="memory">Upload Memory Picture</a> --}}
-        <button id="upload_widget" class="cloudinary-button">Upload files</button>
+        <div class="row">
+            <div class="col s6" id="upload_picture">
+                <button id="upload_widget" class="cloudinary-button">UPLOAD FILES</button>
+            </div>
+
+            <div class="col s6" id="deleteButton2">
+                <button class="cloudinary-button" id="deletePhoto">DELETE PHOTO</button>
+            </div>
+
+        </div>
 
         <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 
@@ -139,6 +159,9 @@
             document.getElementById("upload_widget").addEventListener("click", function () {
                 myWidget.open();
             }, false);
+
+
+
 
             //document.addEventListener("keyup", function (event) {
             //    if (event.keyCode === 13) {
@@ -226,9 +249,45 @@
                 <div id="submitButton">
                     <a class="waves-effect waves-light btn" id="submit">Submit</a>
                 </div>
+
+                <div id="reloadButtons">
+                    <div class="row">
+                        <div class="col s6" id="resubmitButton">
+                            {{!-- <div class="col s6" id="resubmitButton" hidden> --}}
+                            <a class="waves-effect waves-light btn" id="resubmit">Re-submit</a>
+                        </div>
+                        <div class="col s6" id="deleteButton">
+                            {{!-- <div class="col s6" id="deleteButton" hidden> --}}
+                            <a class="waves-effect waves-light btn" id="deleteEntry">Delete Entry</a>
+                        </div>
+
+                    </div>
+                </div>
+
             </form>
         </div>
 
+        <script type="text/javascript">
+            if (document.getElementById("journal_entry").value != '') {
+                document.getElementById("deleteEntry").style.display = "block"
+                document.getElementById("resubmit").style.display = "block"
+                document.getElementById("submit").style.display = "none"
+                // $("#deleteEntry").hidden = false
+            } else {
+                document.getElementById("deleteEntry").style.display = "none"
+                document.getElementById("resubmit").style.display = "none"
+                document.getElementById("submit").style.display = "block"
+
+            }
+
+           // if (document.getElementById("cloudinaryUpload").src != "") {
+             //   document.getElementById("deletePhoto").style.display = "block"
+            //    // $("#deleteEntry").hidden = false
+          //  } else {
+         //       document.getElementById("deletePhoto").style.display = "none"
+
+          //  }
+        </script>
 
 
 
