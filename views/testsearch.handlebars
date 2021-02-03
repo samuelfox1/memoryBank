@@ -56,20 +56,22 @@
     <div class="col s12">
       <div class="card-div">
 
+        <ul>
         {{#each data}}
-        <div class="card small">
+          <div class="card follow-card">
           <div class="card-content">
-            <p>{{first_name}}</p>
+            <p>{{first_name}} {{last_name}}</p>
             <hr>
-            <p>{{last_name}}</p>
+            <p> Sign: {{sign}}</p>
             <hr>
-            <p>{{sign}}</p>
-            <hr>
-            <button id="follow" data-id={{id}}>Follow</button>
-            <button id="unfollow" data-id={{id}}>unFollow</button>
-          </div>
-          {{/each}}
+            <a class="waves-effect waves-light btn" data-id={{id}}>Follow</a>
+            <a class="waves-effect waves-light btn" data-id={{id}}>Unfollow</a>
+            
         </div>
+        </div>
+          {{/each}}
+        </ul>
+        
       </div>
     </div>
 
