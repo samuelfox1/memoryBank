@@ -154,17 +154,10 @@ console.log($("#journal_entry").val())
 
 $("#searchIcon").on("click", function (event) {
     event.preventDefault();
-    $.post("/api/find_user", {
-        find_user: $("#search").val(),
-    })
-        .then((data) => {
-            console.log(data)
-        })
-        .fail((err) => {
-            console.log(err)
-        })
-
-})
+    if ($("#search").val().trim()) {
+        window.location.href = `/${$("#search").val().trim()}`;
+    }
+});
 
 //widget button click on userhome handlebars
 $("#upload_widget").on("click"),
@@ -242,5 +235,15 @@ $("#mode").change(function () {
     }
 });
 
+$("#public_status").change(function () {
+    if ($(this).is(":checked")) {
+        {
+            public = true
+        }
+    } else {
+        public = false
+    }
+    console.log(public)
+});
 
 
