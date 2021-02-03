@@ -8,25 +8,21 @@ const { Op } = require("sequelize");
 
 // / route to the welcome page
 router.get("/", function (req, res) {
-  res.render("index");
+  es.render("index");
 });
 
 
 
 // /login route to go to login page
 router.get("/login", function (req, res) {
-  res.render("login", {
-    user: req.session.user,
-  });
+  res.render("login", { user: req.session.user });
 });
 
 
 
 // /create route from welcome page to create user page
 router.get("/create", (req, res) => {
-  res.render("create", {
-    user: req.session.user,
-  });
+  res.render("create", { user: req.session.user });
 });
 
 
@@ -37,17 +33,14 @@ router.get("/home", async function (req, res) {
   var lastEntry = await getLastEntry(req.session.user.id);
   db.daily_history
     .findOne({
-      where: {
-        createdAt: lastEntry.createdAt,
-      },
-      include: [db.user_data],
+      where: { createdAt: lastEntry.createdAt },
+      include: [db.user_data]
     })
     .then((data) => {
       const hbsObj = {
         histories: data.dataValues,
         users: data.dataValues.user_datum.dataValues,
       };
-
       res.render("userHome", hbsObj);
     });
 });
@@ -58,22 +51,17 @@ router.get("/home", async function (req, res) {
 router.get("/history", function (req, res) {
   db.daily_history
     .findAll({
-      where: {
-        userDatumId: req.session.user.id,
-      },
+      where: { userDatumId: req.session.user.id },
       include: [db.user_data],
     })
     .then((data) => {
       const jsonData = data.map((obj) => {
         const jsonObj = obj.toJSON();
-
         return jsonObj;
       });
-
       const hbsObj = {
         histories: jsonData,
       };
-
       res.render("history", hbsObj);
     });
 });
@@ -81,7 +69,6 @@ router.get("/history", function (req, res) {
 
 
 router.post("/api/find_user", (req, res) => {
-
   db.user_data
     .findAll({
       where: {
@@ -94,9 +81,7 @@ router.post("/api/find_user", (req, res) => {
         ],
       },
     })
-    .then((data) => {
-      res.json(data);
-    });
+    .then((data) => { res.json(data) });
 });
 
 
@@ -105,20 +90,10 @@ router.post("/api/find_user", (req, res) => {
 function getLastEntry(data) {
   return new Promise((resolve, reject) => {
     db.daily_history
-      .findAll(
-        {
-          where: {
-            userDatumId: data,
-          },
-        },
-        {
-          limit: 1,
-          order: [["createdAt", "DESC"]],
-        }
+      .findAll({ where: { userDatumId: data } },
+        { limit: 1, order: [["createdAt", "DESC"]] }
       )
-      .then((data) => {
-        resolve(data[0]);
-      });
+      .then((data) => { resolve(data[0]) });
   });
 }
 
