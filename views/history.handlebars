@@ -1,7 +1,7 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
+  <li><a id="home" href="/home">Home</a></li>
   <li><a id="history" href="/history">History</a></li>
-  <li><a id="feed" href="#!">Feed</a></li>
   <li><a id="signout" href="/">Logout</a></li>
 </ul>
 <nav>
@@ -9,7 +9,7 @@
   <div class="nav-wrapper">
     <div class="row">
 
-      <div class="col s4">
+      <div class="col s3 m4 l4">
         <a href="/home" class="brand-logo left" id="title">MemoryBank</a>
       </div>
 
@@ -17,7 +17,7 @@
                 <h2 id="title">Memorybank</h2>
             </div> --}}
 
-      <div class="col s4">
+      <div class="col s7 m4 l4">
         <nav>
           <div class="nav-wrapper">
             <form id="searchBar" action="/history">
@@ -38,7 +38,7 @@
             username and actual name? Should there be a "find friends" area? How would we decide which users to
             recommend if we did that? --}}
 
-      <div class="col s4">
+      <div class="col s2 m4 l4">
         <ul class="right">
 
           <!-- Dropdown Trigger -->
@@ -68,8 +68,6 @@
         <div class="card small">
           <div class="card-image">
             <img src={{memory_image}}>
-            <span class="card-title"><a class="waves-effect waves-light btn clear-btn"><i class="material-icons left"
-                  id="delete-button" data-id={{id}}>clear</i></a></span>
           </div>
           <div class="card-content">
             <p>{{createdAt}}</p>
@@ -85,10 +83,22 @@
               </p>
             </div>
           </div>
+
+
           <div class="card-action">
-            <a class="viewMore" id="viewMore" href="#">View More</a>
-            <a class="viewLess hide" id="viewLess" href="#">View Less</a>
+            <div class="row">
+              <div class="col s9 m11 l11">
+                <a class="viewMore" id="viewMore" href="#">View More</a>
+                <a class="viewLess hide" id="viewLess" href="#">View Less</a>
+              </div>
+
+              <div class="col s3 m1 l1">
+                <a class="waves-effect waves-light btn clear-btn"><i class="material-icons left" id="delete-button"
+                    data-id={{id}}>clear</i></a>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
