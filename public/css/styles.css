@@ -32,7 +32,7 @@ h5 {
 .switch, #mode {
   text-align: right;
 }
-/* TODO: Fix dark mode by referencing this */
+
 #title {
   color: black;
   text-align: left;
@@ -40,6 +40,21 @@ h5 {
   font-family: "apple chancery";
 }
 
+#feed {
+  text-align: center;
+  padding-bottom: 2vw;
+}
+
+#feedHr {
+  width: 60%;
+}
+
+#breakToFeed {
+  width: 90%;
+ height: 2px;
+ color: black;
+ background-color: black;
+}
 
 
 .containerDiv {
