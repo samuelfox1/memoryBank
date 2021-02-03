@@ -6,7 +6,7 @@ $("#textarea1").val("New Text");
 // M.textareaAutoResize($("#textarea1"));
 
 $("#memory").on("click", function () {
-  alert("Button works");
+    alert("Button works");
 });
 
 // const searchUsers = document.getElementById("search")
@@ -41,39 +41,144 @@ $("#memory").on("click", function () {
 //     console.log("HEHEHE")
 // })
 
+$("#public_status").change(function () {
+    if ($(this).is(":checked")) {
+        {
+            public = true
+        }
+    } else {
+        public = false
+    }
+    console.log(public)
+});
+
+
 $("#submit").on("click", function (event) {
-  event.preventDefault();
-  $.post("/api/journal", {
-    // memory_image: $("#memory_image").val(),
-    journal_entry: $("#journal_entry").val(),
-    public_status: public
-  })
-    .then((data) => {
-      console.log("saved entry");
-      public = false
-      window.location.href = "/home"
+    event.preventDefault();
+    $.post("/api/journal", {
+        // memory_image: $("#memory_image").val(),
+        journal_entry: $("#journal_entry").val(),
+        public_status: public
     })
-    .fail((err) => {
-      console.log("error");
-      public = false
-    });
+        .then((data) => {
+            console.log("saved entry");
+            public = false
+            window.location.href = "/home"
+        })
+        .fail((err) => {
+            console.log("error");
+            public = false
+        });
 
 });
 
+$("#resubmit").on("click", function (event) {
+    // if ($("#journal_entry").val() != "") {
+    //     document.getElementById("deleteEntry").style.display = "none"
+    // } else {
+    //     console.log("nothing to resubmit")
+    // }
+
+    event.preventDefault();
+    $.post("/api/journal", {
+        // memory_image: $("#memory_image").val(),
+        journal_entry: $("#journal_entry").val(),
+        public_status: public
+    })
+        .then((data) => {
+            console.log("saved entry");
+            public = false
+            window.location.href = "/home"
+        })
+        .fail((err) => {
+            console.log("error");
+            public = false
+        });
+
+});
+
+// if ($("#journal_entry").val() != "") {
+//     document.getElementById("deleteEntry").style.display = "block"
+//     // $("#deleteEntry").hidden = false
+// } else {
+//     document.getElementById("deleteEntry").style.display = "none"
+//     document.getElementById("deleteEntry").hidden = true
+// }
+
+$("#deleteEntry").on("click", function (event) {
+    event.preventDefault
+    // document.getElementById("deleteEntry").style.display = "none"
+
+    if ($("#journal_entry").val() != "") {
+        console.log("Something was written here")
+        document.getElementById("journal_entry").value = ''
+        // document.getElementById("deleteEntry").style.display = "none"
+
+
+    } else {
+        console.log("nothing written here")
+
+
+    }
+    // might want there to be an "are you sure" confirmation before they can delete
+})
+
+$("#deletePhoto").on("click", function (event) {
+    event.preventDefault
+    // document.getElementById("deletePhoto").style.display = "none"
+    if (document.getElementById("cloudinaryUpload").src != "") {
+        console.log("A photo was here")
+        document.getElementById("cloudinaryUpload").src = ''
+
+
+    } else {
+        console.log("No photo here")
+
+    }
+    $.post("/api/image", {
+        memory_image: "https://www.astrologybythebay.com/articles_photos/article-placeholder.jpg"
+    })
+
+
+        .then((data) => {
+            console.log(data, "deleted image")
+            location.reload()
+        })
+        .fail((err) => {
+            console.log(err)
+        })
+
+    // might want there to be an "are you sure" confirmation before they can delete
+})
+
+// function clearEntry() {
+//     console.log($("#journal_entry").val())
+//     $("#journal_entry").val() === ''
+//     document.getElementById("journal_entry").value = ''
+// }
+
+
+// TODO: If statement where if there is text in the daily entry field, hide the submit button and show the other three
+
+console.log($("#journal_entry").val())
+
+
+
+
 $("#searchIcon").on("click", function (event) {
-  event.preventDefault();
-  if ($("#search").val().trim()) {
-    window.location.href = `/${$("#search").val().trim()}`;
-  }
+    event.preventDefault();
+    if ($("#search").val().trim()) {
+        window.location.href = `/${$("#search").val().trim()}`;
+    }
 });
 
 //widget button click on userhome handlebars
 $("#upload_widget").on("click"),
-  function (event) {
-    event.preventDefault();
-    // sending a post request to backend containg the
-    $.post("");
-  };
+    function (event) {
+        event.preventDefault();
+        // sending a post request to backend containg the
+        $.post("");
+    };
 
 // TODO: Figure out if you have to rewrite the api/entries thing above to be something else
 
@@ -96,16 +201,13 @@ $("#upload_widget").on("click"),
 // })
 
 $("#edit").on("click", function (event) {
-  event.preventDefault();
-  const textInput = $("#textarea1").val();
-  console.log(textInput);
-  window.location.href = "/history";
-  alert("Update successfully!");
+    event.preventDefault();
+    const textInput = $("#textarea1").val();
+    console.log(textInput);
+    window.location.href = "/history";
+    alert("Update successfully!");
 });
 
-$("#delete").on("click", function () {
-  alert("Button works");
-});
 
 $("#textarea1").val("");
 
@@ -123,29 +225,46 @@ $("#textarea1").val("");
 //
 
 $("#mode").change(function () {
-  if ($(this).is(":checked")) {
-    {
-      $(".nav-wrapper").removeClass("navLight").addClass("navDark");
-      $(".container").removeClass("containerLight").addClass("containerDark");
+    if ($(this).is(":checked")) {
+        {
+            $(".nav-wrapper").removeClass("navLight").addClass("navDark");
+            $(".container").removeClass("containerLight").addClass("containerDark");
+            // $("#title").removeClass("titleLight").addClass("titleDark")
+            $("#title").css('color', 'white')
+            $(".drowdown-trigger").css('color', 'white')
+            $(".material-icons").css('color', 'white')
+            $("#journal_entry").css('color', 'white')
 
-      console.log("dark");
+
+            console.log("dark");
+        }
+    } else {
+        $(".nav-wrapper").removeClass("navDark").addClass("navLight");
+        $(".container").removeClass("containerDark").addClass("containerLight");
+        // $("#title").removeClass("titleDark").addClass("titleLight")
+        $("#title").css('color', 'black')
+        $(".drowdown-trigger").css('color', 'black')
+        $(".material-icons").css('color', 'black')
+        $("#journal_entry").css('color', 'black')
+
+        console.log("light");
     }
-  } else {
-    $(".nav-wrapper").removeClass("navDark").addClass("navLight");
-    $(".container").removeClass("containerDark").addClass("containerLight");
-    console.log("light");
-  }
 });
 
 $("#public_status").change(function () {
-  if ($(this).is(":checked")) {
-    {
-      public = true
+    if ($(this).is(":checked")) {
+        {
+            public = true
+        }
+    } else {
+        public = false
     }
-  } else {
-    public = false
-  }
-  console.log(public)
+    console.log(public)
 });
+
+
+
+
+
 
 
