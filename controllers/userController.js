@@ -95,10 +95,19 @@ router.post("/api/journal", async function (req, res) {
 
 
 
-//route to destroy active session cookie
-router.get("/logout", (req, res) => {
-  req.session.destroy();
-  res.send("logged out");
+router.post("/api/deleteHistory", (req, res) => {
+  console.log(
+    req.body.id,
+  );
+  db.daily_history
+    .destroy({
+      where: {
+        id: req.body.id,
+      },
+    })
+    .then((data) => {
+      res.json(data);
+    });
 });
 
 

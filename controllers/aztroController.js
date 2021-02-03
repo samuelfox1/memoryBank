@@ -104,6 +104,7 @@ function makeApiRequest(data) {
   };
 
   return new Promise((resolve, reject) => {
+
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
       let aztro = JSON.parse(body);
@@ -122,11 +123,13 @@ function makeApiRequest(data) {
           userDatumId: data,
           memory_image:
             "https://www.astrologybythebay.com/articles_photos/article-placeholder.jpg",
+          DateTime: new Date()
         })
         .then((data) => {
+          console.log(data)
           resolve(aztro);
         }).catch(err => {
-          rejecy(err)
+          reject(err)
         })
     });
   });

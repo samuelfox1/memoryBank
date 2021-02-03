@@ -48,7 +48,7 @@
 </nav>
 
 <div class="container historyContainer" id="historyContainer">
-  <h1 id="history-header">History Page</h1>
+  <h1 id="history-header">Results</h1>
   <!-- #each to create new row and column displaying date -->
 
 
@@ -56,32 +56,23 @@
     <div class="col s12">
       <div class="card-div">
 
-        {{#each histories}}
+        {{#each data}}
         <div class="card small">
-          <div class="card-image">
-            <img src={{memory_image}}>
-            <span class="card-title">{{createdAt}}</span>
-          </div>
           <div class="card-content">
-            <p>{{user_datum.first_name}}</p>
-            <p>Horoscope:
-              <br>{{description}}
-            </p>
+            <p>{{first_name}}</p>
             <hr>
-            <p>Entry:
-              <br>
-              {{journal_entry}}
-            </p>
-          </div>
-          <div class="card-action">
-            <a class="viewMore" id="viewMore" href="#">View More</a>
-            <a class="viewLess hide" id="viewLess" href="#">View Less</a>
+            <p>{{last_name}}</p>
+            <hr>
+            <p>{{sign}}</p>
+            <hr>
+            <button id="follow" data-id={{id}}>Follow</button>
+            <button id="unfollow" data-id={{id}}>unFollow</button>
           </div>
           {{/each}}
         </div>
       </div>
     </div>
-
+    <button id="getfollowers">see stream</button>
 
 
   </div>

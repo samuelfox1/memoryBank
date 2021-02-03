@@ -27,6 +27,15 @@ router.get("/create", (req, res) => {
 
 
 
+//route to destroy active session cookie
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.send("logged out");
+});
+
+
+
+
 // /home route for after login user goes to their home page
 // users home page will always display the most recent data for that day
 router.get("/home", async function (req, res) {
@@ -37,6 +46,7 @@ router.get("/home", async function (req, res) {
       include: [db.user_data]
     })
     .then((data) => {
+      data.dataValues.createdAt = convertDate(data.dataValues.createdAt)
       const hbsObj = {
         histories: data.dataValues,
         users: data.dataValues.user_datum.dataValues,
@@ -56,6 +66,10 @@ router.get("/history", function (req, res) {
       order: [["createdAt", "DESC"]],
     })
     .then((data) => {
+
+      console.log(data[0].dataValues.createdAt, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+      data[0].dataValues.createdAt = convertDate(data[0].dataValues.createdAt)
+      console.log(data[0].dataValues.createdAt, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
       const jsonData = data.map((obj) => {
         const jsonObj = obj.toJSON();
         return jsonObj;
@@ -63,43 +77,40 @@ router.get("/history", function (req, res) {
       const hbsObj = {
         histories: jsonData,
       };
+      console.log(jsonData)
       res.render("history", hbsObj);
     });
 });
 
 
 
-router.post("/api/find_user", (req, res) => {
+
+router.get("/:term", (req, res) => {
   db.user_data
     .findAll({
       where: {
         [Op.or]: [
-          { user_name: req.body.find_user },
-          { first_name: req.body.find_user },
-          { last_name: req.body.find_user },
-          { sign: req.body.find_user },
-          { email: req.body.find_user },
+          { user_name: req.params.term },
+          { first_name: req.params.term },
+          { last_name: req.params.term },
+          { sign: req.params.term },
+          { email: req.params.term },
         ],
       },
     })
-    .then((data) => { res.json(data) });
-});
-
-router.post("/api/deleteHistory", (req, res) => {
-  console.log(
-    req.body.id,
-    "FUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUNFUN"
-  );
-  db.daily_history
-    .destroy({
-      where: {
-        id: req.body.id,
-      },
-    })
     .then((data) => {
-      res.json(data);
+      const jsonData = data.map((obj) => {
+        const jsonObj = obj.toJSON();
+        return jsonObj;
+      });
+      const hbsObj = {
+        data: jsonData,
+      };
+      res.render("testsearch", hbsObj);
+
     });
 });
+
 
 //returns the most recent entry for the logged in user
 function getLastEntry(data) {
@@ -110,6 +121,16 @@ function getLastEntry(data) {
       )
       .then((data) => { resolve(data[0]) });
   });
+}
+
+
+// get todays date formatted as mm/dd/yyyy
+function convertDate(x) {
+  let dd = String(x.getDate()).padStart(2, "0");
+  let mm = String(x.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = x.getFullYear();
+  x = mm + "/" + dd + "/" + yyyy;
+  return x;
 }
 
 

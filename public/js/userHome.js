@@ -62,16 +62,9 @@ $("#submit").on("click", function (event) {
 
 $("#searchIcon").on("click", function (event) {
   event.preventDefault();
-  $.post("/api/find_user", {
-    find_user: $("#search").val().trim(),
-  })
-    .then((data) => {
-      console.log(data);
-      // window.location.href = `/search`;
-    })
-    .fail((err) => {
-      console.log(err);
-    });
+  if ($("#search").val().trim()) {
+    window.location.href = `/${$("#search").val().trim()}`;
+  }
 });
 
 //widget button click on userhome handlebars
