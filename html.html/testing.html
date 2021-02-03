@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div role="search">
+        <input id="search" type="search" placeholder="Search to find others" required>
+
+    </div>
+
+    <script type="text/javascript">
+        const searchUsers = document.getElementById("search")
+        searchUsers.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                // event.preventDefault();
+                // document.getElementById("searchIcon").click()
+                alert("HEHEHE")
+            }
+        })
+    </script>
+
+</body>
+
+</html>

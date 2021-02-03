@@ -1,124 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>memoryBank</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-  </head>
-  <body>
-    <header>
-      <h1>Create Account</h1>
-    </header>
-    <div class="container" id="createContainer">
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <input
-                placeholder="First Name"
-                id="first_name"
-                type="text"
-                class="validate"
-              />
-              <label for="first_name">Name</label>
-            </div>
-            <div class="input-field col s6">
-              <input
-                placeholder="Last Name"
-                id="last_name"
-                type="text"
-                class="validate"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input
-                placeholder="Enter Here"
-                id="disabled"
-                type="text"
-                class="validate"
-              />
-              <label for="disabled">Username</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate" />
-              <label for="email">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" type="password" class="validate" />
-              <label for="password">Password</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="confirmPassword" type="password" class="validate" />
-              <label for="confirmPassword">Confirm Password</label>
-            </div>
-          </div>
-         
-          <div class="row">
-            <div class="col s12">
-              Select your Zodiac:
-              <div class="input-field inline">
-                <!-- Dropdown Trigger -->
-                <a class="dropdown-trigger btn" href="#" data-target="dropdown1"
-                  >Here!</a
-                >
 
-                <!-- Dropdown Structure -->
-                <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="#!">Aries Mar 21 - Apr 20</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Taurus Apr 21 - May 20</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Gemini May 21 21 - Jun 21</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Cancer Jun 22 - Jul 22</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Leo Jul 23 - Aug 22</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Virgo Aug 23 - Sep 22</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Libra Sep 23 - Oct 22</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Scorpio Oct 23 - Nov 22</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Sagittarius Nov 23 - Dec 21</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Capircorn Dec 22 - Jan 19</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Aquarius Jan 20 - Feb 18</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Pisces Feb 19 - March 20</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-                <a class="waves-effect waves-light btn" id="saveAccountBtn"
-                >Create Account</a
-              >
-          </div>
-        </form>
+<div class="container" id="createContainer">
+  <h1 class = "defaultH1" id="createH1">Create Account</h1>
+  
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="First Name" id="first_name" type="text" class="validate" />
+          <label for="first_name">Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Last Name" id="last_name" type="text" class="validate" />
+        </div>
       </div>
-    </div>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/create.js"></script>
-  </body>
-</html>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Enter Here" id="username" type="text" class="validate" />
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate" />
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" />
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="confirmPassword" type="password" class="validate" />
+          <label for="confirmPassword">Confirm Password</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          Select your Zodiac:
+          <div class="input-field inline">
+            <!-- Dropdown Trigger -->
+            <a class="dropdown-trigger btn zodiacBtn" href="#" data-target="dropdown1">Here</a>
+
+            <!-- Dropdown Structure -->
+            <ul id="dropdown1" class="dropdown-content zodiac">
+              <li><a href="#!">Aries Mar 21 - Apr 20</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Taurus Apr 21 - May 20</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Gemini May 21 21 - Jun 21</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Cancer Jun 22 - Jul 22</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Leo Jul 23 - Aug 22</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Virgo Aug 23 - Sep 22</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Libra Sep 23 - Oct 22</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Scorpio Oct 23 - Nov 22</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Sagittarius Nov 23 - Dec 21</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Capircorn Dec 22 - Jan 19</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Aquarius Jan 20 - Feb 18</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">Pisces Feb 19 - March 20</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <a class="waves-effect waves-light btn" id="saveAccountBtn">Create Account</a>
+        </div>
+    </form>
+  </div>
+</div>

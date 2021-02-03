@@ -1,5 +1,7 @@
+const moment = require('moment')
+
 module.exports = function (sequelize, DataTypes) {
-  var daily_histories = sequelize.define("daily_history", {
+  var daily_history = sequelize.define("daily_history", {
     color: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,9 +27,6 @@ module.exports = function (sequelize, DataTypes) {
     description: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1, 140],
-      },
     },
     lucky_number: {
       type: DataTypes.STRING,
@@ -52,23 +51,32 @@ module.exports = function (sequelize, DataTypes) {
     },
     memory_image: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 140],
-      },
+      allowNull: true,
     },
+
     journal_entry: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 140],
-      },
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
+
     public_status: {
       type: DataTypes.BOOLEAN,
       default: false,
     },
+
+    DateTime: {
+      type: DataTypes.DATEONLY,
+      get: function () {
+        return moment(this.getDataValue('DateTime')).format('DD.MM.YYYY')
+      }
+    }
   });
+
+  daily_history.associate = function (models) {
+    // add associations here
+    daily_history.belongsTo(models.user_data);
+    // Review.belongsToMany(models.Platform,{through:"ReviewPlatform"})
+  };
   // return Test;
-  return daily_histories;
+  return daily_history;
 };

@@ -1,60 +1,255 @@
-header {
-  border: 1px solid black;
+.body {
+  background: url("https://wallpaperaccess.com/full/1113864.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
+/* Default styling for header and h1 */
+.defaultHeader {
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 4%;
+  border-radius: 25px;
+  width: 40vw;
+  height: 10vh;
   text-align: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 4vw;
 }
 
-#homeContainer {
-  padding-top: 10%;
-  padding-bottom: 10%;
+#title {
+  color: black;
   text-align: center;
-  border: 1px solid black;
+
+  /* font-style: italic; */
+  font-family: "apple chancery";
+}
+
+.containerDiv {
+  margin-top: 10%;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-#createContainer {
-  padding-top: 3%;
-  border: 1px solid black;
-  text-align: center;
+/* Login/Create homepage */
+.defaultH1 {
+  margin: 0%;
+  font-family: "Dancing Script", cursive;
 }
 
-#loginContainer {
-  border: 1px solid black;
-  text-align: center;
-}
-
-.login-row {
-  margin: 0 auto;
-  width: 70%;
-}
-
-#history-header {
-  text-align: center;
-}
-
-.history-row {
-  width: 80%;
-  margin-top: 3%;
-  text-align: center;
-  height: 50px;
-  text-align: center;
-  border: 1px solid black;
-}
-
-#historyContainer {
-  border: 1px solid black;
-  height: 100vh;
-}
-
-.historydate {
-  margin: 0 auto;
-  margin-top: 4px;
-  height: 40px;
-  width: 90px;
-  border: 1px solid black;
+.circleContainer {
+  background-color: white;
+  border-radius: 50%;
+  height: 50vh;
+  width: 50vh;
+  padding-top: 8%;
+  padding-bottom: 10%;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLAqI9gsj8525IrLMtZo1ZtfMYP5dXUk9mEg&usqp=CAU");
+  background-position: center;
+  background-size: cover;
+}
+/* INDEX STYLE */
+.indexDiv,
+.loginDiv {
+  display: block;
+}
+
+.buttons {
+  margin-top: 4%;
+}
+
+/* Create Account */
+
+#createContainer {
+  margin-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+  background-color: white;
+  text-align: center;
+  border-radius: 50px;
+}
+
+#createH1 {
+  margin-bottom: 1%;
+}
+
+/* Login Page */
+
+#mainLoginRow {
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  padding: 0%;
+  height: 170px;
+  margin: 0%;
+  margin-bottom: 2%;
+  color: black;
+}
+.labelColor {
+  color: black !important;
+}
+.usernameRow {
+  margin: 0%;
+  color: black;
+}
+
+.login-input {
+  color: white;
+}
+
+/* History page */
+#history-header {
+  color: white;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin: 0%;
+  margin-top: 2%;
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+}
+
+.nav-wrapper {
+  padding-left: 2vw;
+  background-color: white;
+}
+
+.dropdown-trigger,
+.material-icons {
+  color: black;
+}
+
+#historyContainer {
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.144);
+  margin-bottom: 10%;
+  margin-top: 5%;
+  height: 80vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+/* User homepage */
+
+#hororscopeForDay,
+#otherLuckyInfo {
+  text-align: center;
+  border: solid;
+  border-width: thin;
+  margin: 1vw;
+}
+
+#uploadArea,
+#submitButton {
+  text-align: center;
+}
+
+#memory,
+#submit {
+  margin-bottom: 2vw;
+}
+
+#editButton {
+  text-align: right;
+}
+
+#deleteButton {
+  text-align: left;
+}
+
+#edit,
+#delete {
+  background-color: rgb(245, 125, 78);
+}
+
+.welcomeContainer {
+  background: white;
+  margin-top: 2vw;
+  padding-top: 0;
+}
+
+/* SWITCH MODE */
+
+.navDark {
+  background-color: black;
+}
+
+.navLight {
+  background-color: #26a69a;
+}
+
+.containerLight {
+  background: white;
+  color: black;
+}
+
+.containerDark {
+  background: black;
+  color: white;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+#pubPriv {
+  text-align: center;
+  padding-bottom: 2vw;
+}
+
+/* #search {
+  color: white;
+  background-color: black;
+} */
+
+/* Cards */
+.card-row {
+  margin: 0 auto;
+  margin-bottom: 3%;
+}
+.card-div {
+  display: flex;
+  justify-content: center;
+}
+.card {
+  width: 600px;
+}
+
+.card-title {
+  margin-left: 89%;
+  margin-bottom: 20%;
+}
+
+.clear-btn {
+  width: 20px !important;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-right {
+  margin-left: 89%;
+  margin-bottom: 45%;
+}
+
+.material-icons {
+  margin: 0% !important;
+}
+
+.p-entry {
+  word-break: break-all;
 }
