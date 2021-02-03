@@ -4,8 +4,11 @@ const db = require("../models");
 // Require 'request npm package'
 const request = require("request");
 require("dotenv").config();
+
+
 // Settings snippet for the aztro api call
 var userSign = "";
+
 
 
 // Big picture of what this call is trying to do is create ONE DAY INSTANCE of data retreval from the api for each individual user based on there unique id and passing thier sign as the query term for the API.
@@ -15,7 +18,7 @@ router.get("/api/aztro/:id/:sign", async function (req, res) {
   userSign = req.params.sign;
   // when the get request is made...
   // get todays date,
-  var today = await getToday();
+  var today = getToday();
   //get the date of last entry in database
   var lastEntry = await getLastEntryDate(req.params.id);
   //if today does not equal last entry...
@@ -26,23 +29,25 @@ router.get("/api/aztro/:id/:sign", async function (req, res) {
     res.json(aztro);
   } else {
     //send the stored results back to the frontend
-    console.log("todays data already exists");
+    console.log("todays data already exists - !!!!!!!!!!!!!!!!!!!!!!!!!!");
 
     res.json(req.session.user);
   }
 });
 
-function getToday() {
-  return new Promise((resolve, reject) => {
-    let x = new Date();
-    let dd = String(x.getDate()).padStart(2, "0");
-    let mm = String(x.getMonth() + 1).padStart(2, "0"); //January is 0!
-    let yyyy = x.getFullYear();
 
-    x = mm + "/" + dd + "/" + yyyy;
-    resolve(x);
-  });
+
+function getToday() {
+  let x = new Date();
+  let dd = String(x.getDate()).padStart(2, "0");
+  let mm = String(x.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = x.getFullYear();
+  x = mm + "/" + dd + "/" + yyyy;
+  return x;
 }
+
+
+
 // this will reutrn the most recent row entry for the user with id passed in
 function getLastEntryDate(data) {
   // returning a new promise
@@ -78,6 +83,8 @@ function getLastEntryDate(data) {
       });
   });
 }
+
+
 
 function makeApiRequest(data) {
   var options = {
@@ -116,4 +123,7 @@ function makeApiRequest(data) {
     });
   });
 }
+
+
+
 module.exports = router;

@@ -3,6 +3,8 @@ const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcrypt");
 
+
+
 // /create route that will create the table structure for the datbase and insert the user givin information fro the user on the creation page and apply it into the field columns on that table
 router.post("/create", function (req, res) {
   db.user_data
@@ -21,6 +23,8 @@ router.post("/create", function (req, res) {
       res.status(500).json(err);
     });
 });
+
+
 
 // back end recieves req(request) data from front end on a button click event.
 router.post("/login", (req, res) => {
@@ -58,6 +62,8 @@ router.post("/login", (req, res) => {
     });
 });
 
+
+
 // image url data string being sent from the front end cloudinary call
 router.post("/api/image", async function (req, res) {
   // the variable lastEntry refers to the createdAt column in our DB based upon the specific user ID wihhin the scope of our user session
@@ -80,6 +86,8 @@ router.post("/api/image", async function (req, res) {
       res.send("updated");
     });
 });
+
+
 
 router.post("/api/journal", async function (req, res) {
   // the variable lastEntry refers to the createdAt column in our DB based upon the specific user ID wihhin the scope of our user session
@@ -104,12 +112,15 @@ router.post("/api/journal", async function (req, res) {
     });
 });
 
-//returns createdAt clou
+
+
 //route to destroy active session cookie
 router.get("/logout", (req, res) => {
   req.session.destroy();
   res.send("logged out");
 });
+
+
 
 //returns the most recent entry for the logged in user
 function getLastEntry(data) {

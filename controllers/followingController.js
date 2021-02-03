@@ -21,6 +21,9 @@ router.post("/api/follow/:id", async function (req, res) {
       res.json(dbuser);
     });
 });
+
+
+
 router.get("/api/follow/", async function (req, res) {
   console.log(req.session);
   db.user_data
@@ -40,5 +43,7 @@ router.get("/api/follow/", async function (req, res) {
       res.json(data);
     });
 });
+
+
 
 module.exports = router;
