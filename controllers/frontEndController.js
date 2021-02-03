@@ -8,7 +8,7 @@ const { Op } = require("sequelize");
 
 // / route to the welcome page
 router.get("/", function (req, res) {
-  es.render("index");
+  res.render("index");
 });
 
 
