@@ -29,7 +29,8 @@ h5 {
   text-align: center;
 }
 
-.switch, #mode {
+.switch,
+#mode {
   text-align: right;
 }
 /* TODO: Fix dark mode by referencing this */
@@ -39,8 +40,6 @@ h5 {
   /* font-style: italic; */
   font-family: "apple chancery";
 }
-
-
 
 .containerDiv {
   margin-top: 10%;
@@ -130,7 +129,6 @@ h5 {
   font-family: "Dancing Script", cursive;
 }
 
-
 .nav-wrapper {
   padding-left: 2vw;
   background-color: white;
@@ -184,8 +182,6 @@ h5 {
   text-align: left;
 }
 
-
-
 .welcomeContainer {
   background: rgba(255, 255, 255, 0.925);
   margin-top: 2vw;
@@ -203,23 +199,23 @@ hr {
   width: 80%;
 }
 
-#imageUpload{
+#imageUpload {
   text-align: center;
   padding-bottom: 2vw;
 }
 
-#cloudinaryUpload{
+#cloudinaryUpload {
   width: 100%;
   height: 100%;
   max-width: 500px;
   max-height: 800px;
 }
 
-#resubmitButton{
+#resubmitButton {
   text-align: right;
 }
 
-#deleteButton{
+#deleteButton {
   text-align: left;
 }
 
@@ -227,19 +223,19 @@ hr {
   background-color: #26a69a;
 }
 
-#upload_picture{
+#upload_picture {
   text-align: right;
 }
 
-#deleteButton2{
+#deleteButton2 {
   text-align: left;
 }
 
-#deleteEntry{
+#deleteEntry {
   background-color: rgb(230, 32, 32);
 }
 
-#deletePhoto{
+#deletePhoto {
   background-color: rgb(230, 32, 32);
 }
 
@@ -277,13 +273,6 @@ hr {
   align-items: center;
   height: 10vh;
 }
-
-
-
-
-
-
-
 
 #pubPriv {
   text-align: center;
@@ -335,20 +324,37 @@ hr {
 }
 
 .follow-card {
-  width: 30%;
+  width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#follow {
+  margin-bottom: 3%;
 }
 #follow-card-div {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
 
 @media screen and (max-width: 700px) {
+  .navbar-css1 {
+    display: flex;
+    justify-content: left;
+  }
+  .navbar-css2 {
+    display: flex;
+    justify-content: center;
+  }
+  .navbar-css3 {
+    display: flex;
+    justify-content: right;
+  }
   .follow-card {
     width: 80%;
   }
