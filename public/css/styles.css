@@ -258,7 +258,29 @@
 }
 
 .follow-card {
-  height: 100%;
+  width: 30%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}
+#follow-card-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 700px) {
+  .follow-card {
+    width: 80%;
+  }
+  #follow-card-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #follow {
+    margin-bottom: 4%;
+  }
 }

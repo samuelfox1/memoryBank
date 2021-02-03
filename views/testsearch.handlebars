@@ -52,25 +52,24 @@
   <!-- #each to create new row and column displaying date -->
 
 
-  <div class="row card-row">
+  <div class="row card-row" id="follow-card-row">
     <div class="col s12">
-      <div class="card-div">
+      <div class="card-div" id="follow-card-div">
 
-        <ul>
+        
         {{#each data}}
           <div class="card follow-card">
           <div class="card-content">
             <p>{{first_name}} {{last_name}}</p>
             <hr>
-            <p> Sign: {{sign}}</p>
+            <p>Sign: {{sign}}</p>
             <hr>
-            <a class="waves-effect waves-light btn" data-id={{id}}>Follow</a>
-            <a class="waves-effect waves-light btn" data-id={{id}}>Unfollow</a>
-            
-        </div>
+            <a class="waves-effect waves-light btn follow-button" id="follow" data-id={{id}}>Follow</a>
+            <a class="waves-effect waves-light btn follow-button" id="unfollow" data-id={{id}}>Unfollow</a>
+          </div>
         </div>
           {{/each}}
-        </ul>
+        
         
       </div>
     </div>
