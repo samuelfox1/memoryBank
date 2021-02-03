@@ -10,7 +10,7 @@
         <div class="row">
 
             <div class="col s4">
-                <a href="/home" class="brand-logo" id="title">MemoryBank</a>
+                <a href="/home" class="brand-logo left" id="title">MemoryBank</a>
             </div>
 
             {{!-- <div class="col s4">
@@ -39,7 +39,7 @@
             recommend if we did that? --}}
 
             <div class="col s4">
-                <ul class="right hide-on-med-and-down">
+                <ul class="right">
 
                     <!-- Dropdown Trigger -->
                     <li>
@@ -54,11 +54,11 @@
 
 <div class="container welcomeContainer">
     <div class="row">
-        <div class="col s10">
+        <div class="col s9">
             <h1 id="welcomeH1">Welcome, {{users.first_name}}</h1>
-            <h5>{{histories.createdAt}}</h5>
+
         </div>
-        <div class="col s2">
+        <div class="col s3">
             <div class="row">
                 <div class="col s12">
                     <div class="switch">
@@ -73,7 +73,9 @@
             </div>
 
         </div>
+
     </div>
+    <h5>{{histories.createdAt}}</h5>
 
 
 
@@ -115,11 +117,11 @@
         {{!-- <a class="waves-effect waves-light btn" id="memory">Upload Memory Picture</a> --}}
         <div class="row">
             <div class="col s6" id="upload_picture">
-                <button id="upload_widget" class="cloudinary-button">Upload files</button>
+                <button id="upload_widget" class="cloudinary-button">UPLOAD FILES</button>
             </div>
 
             <div class="col s6" id="deleteButton2">
-                <button class="cloudinary-button" id="deletePhoto">Delete Photo</button>
+                <button class="cloudinary-button" id="deletePhoto">DELETE PHOTO</button>
             </div>
 
         </div>

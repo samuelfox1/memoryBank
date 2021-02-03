@@ -135,6 +135,19 @@ $("#deletePhoto").on("click", function (event) {
         console.log("No photo here")
 
     }
+    $.post("/api/image", {
+        memory_image: "https://www.astrologybythebay.com/articles_photos/article-placeholder.jpg"
+    })
+
+
+        .then((data) => {
+            console.log(data, "deleted image")
+            location.reload()
+        })
+        .fail((err) => {
+            console.log(err)
+        })
+
     // might want there to be an "are you sure" confirmation before they can delete
 })
 
@@ -220,6 +233,8 @@ $("#mode").change(function () {
             $("#title").css('color', 'white')
             $(".drowdown-trigger").css('color', 'white')
             $(".material-icons").css('color', 'white')
+            $("#journal_entry").css('color', 'white')
+
 
             console.log("dark");
         }
@@ -230,6 +245,7 @@ $("#mode").change(function () {
         $("#title").css('color', 'black')
         $(".drowdown-trigger").css('color', 'black')
         $(".material-icons").css('color', 'black')
+        $("#journal_entry").css('color', 'black')
 
         console.log("light");
     }
@@ -245,5 +261,10 @@ $("#public_status").change(function () {
     }
     console.log(public)
 });
+
+
+
+
+
 
 
