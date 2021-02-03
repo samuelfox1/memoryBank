@@ -34,7 +34,9 @@
             </div>
 
             {{!-- Able to add a redirect to the search button, but not a function --}}
-            {{!-- How do we want the search function to work? Should it be able to find people based off of both username and actual name? Should there be a "find friends" area? How would we decide which users to recommend if we did that? --}}
+            {{!-- How do we want the search function to work? Should it be able to find people based off of both
+            username and actual name? Should there be a "find friends" area? How would we decide which users to
+            recommend if we did that? --}}
 
             <div class="col s4">
                 <ul class="right hide-on-med-and-down">
@@ -94,6 +96,7 @@
     <br>
     <br>
     <br>
+    <img src={{histories.memory_image}}>
 
     <div id="uploadArea">
         {{!-- <a class="waves-effect waves-light btn" id="memory">Upload Memory Picture</a> --}}
@@ -168,7 +171,7 @@
         </script>
 
     </div>
-    <p>{{histories.memory_image}}</p>
+
     <br>
 
     {{!-- <div class="row">
@@ -184,15 +187,16 @@
 
 
 
-    {{!-- on the review page, you should use a key for the value so that it's set to whatever they set it to when they submitted it --}}
+    {{!-- on the review page, you should use a key for the value so that it's set to whatever they set it to when they
+    submitted it --}}
 
     {{!-- Should also add approximately this code in your JS (may have to tweek it a bit)
-        $("#public_status").on('change', function() {
-            if ($(this).is(':checked')) {
-                $(this).attr('value', 'true');
-            } else {
-                $(this).attr('value', 'false');
-            } --}}
+    $("#public_status").on('change', function() {
+    if ($(this).is(':checked')) {
+    $(this).attr('value', 'true');
+    } else {
+    $(this).attr('value', 'false');
+    } --}}
     {{!-- TODO: COmbine these two --}}
 
 
@@ -205,13 +209,14 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="journal_entry" class="materialize-textarea" data-length="300"></textarea>
+                        <textarea id="journal_entry" class="materialize-textarea"
+                            data-length="300">{{histories.journal_entry}}</textarea>
                         <label for="textarea2">Daily Entry</label>
                     </div>
                 </div>
                 <div id="pubPriv">
-                    <label> <input type="checkbox" class="filled-in" name="public_status" id="public_status"
-                            value="false"><span>Check the box to
+                    <label class="label"> <input type="checkbox" class="filled-in" name="public_status"
+                            id="public_status" value=><span>Check the box to
                             make this post public</span></label>
                 </div>
                 <div id="submitButton">
@@ -219,6 +224,8 @@
                 </div>
             </form>
         </div>
+
+
 
 
     </div>

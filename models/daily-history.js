@@ -50,7 +50,6 @@ module.exports = function (sequelize, DataTypes) {
     memory_image: {
       type: DataTypes.STRING,
       allowNull: true,
-      default: "",
     },
 
     journal_entry: {

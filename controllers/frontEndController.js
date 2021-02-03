@@ -46,7 +46,6 @@ router.get("/home", async function (req, res) {
 
 // /history route that the user can visit once logged in from the burger bar in the top right to view past entries order by most recent day
 router.get("/history", function (req, res) {
-  req.session.user.id;
   db.daily_history
     .findAll({
       where: {
@@ -92,6 +91,12 @@ router.post("/api/find_user", (req, res) => {
 
   db.user_data
     .findAll({
+      // where: {
+      //   [Op.or]: [{ user_name: req.body.find_user }],
+      //   [Op.or]: [{ last_name: req.body.find_user }],
+      //   [Op.or]: [{ sign: req.body.find_user }],
+      //   [Op.or]: [{ email: req.body.find_user }],
+      // },
       where: {
         [Op.or]: [
           { user_name: req.body.find_user },
