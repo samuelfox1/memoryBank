@@ -57,24 +57,25 @@
   <!-- #each to create new row and column displaying date -->
 
 
-  <div class="row card-row">
+  <div class="row card-row" id="follow-card-row">
     <div class="col s12">
-      <div class="card-div">
+      <div class="card-div" id="follow-card-div">
 
+        
         {{#each data}}
-        <div class="card small">
+          <div class="card follow-card">
           <div class="card-content">
-            <p>{{first_name}}</p>
+            <p>{{first_name}} {{last_name}}</p>
             <hr>
-            <p>{{last_name}}</p>
+            <p>Sign: {{sign}}</p>
             <hr>
-            <p>{{sign}}</p>
-            <hr>
-            <button id="follow" data-id={{id}}>Follow</button>
-            <button id="unfollow" data-id={{id}}>unFollow</button>
+            <a class="waves-effect waves-light btn follow-button" id="follow" data-id={{id}}>Follow</a>
+            <a class="waves-effect waves-light btn follow-button" id="unfollow" data-id={{id}}>Unfollow</a>
           </div>
-          {{/each}}
         </div>
+          {{/each}}
+        
+        
       </div>
     </div>
 
