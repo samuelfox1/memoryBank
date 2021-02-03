@@ -1,3 +1,5 @@
+var public = false
+
 $(".dropdown-trigger").dropdown();
 
 $("#textarea1").val("New Text");
@@ -40,6 +42,7 @@ $("#memory").on("click", function () {
 // })
 
 $("#submit").on("click", function (event) {
+<<<<<<< HEAD
   event.preventDefault();
   $.post("/api/journal", {
     // memory_image: $("#memory_image").val(),
@@ -51,6 +54,24 @@ $("#submit").on("click", function (event) {
     .fail((err) => {
       console.log("error");
     });
+=======
+    event.preventDefault();
+    $.post("/api/journal", {
+        // memory_image: $("#memory_image").val(),
+        journal_entry: $("#journal_entry").val(),
+        public_status: public
+    })
+        .then((data) => {
+            console.log("saved entry");
+            public = false
+            window.location.href = "/home"
+        })
+        .fail((err) => {
+            console.log("error");
+            public = false
+        });
+
+>>>>>>> dev
 });
 
 $("#searchIcon").on("click", function (event) {
@@ -136,3 +157,19 @@ $("#mode").change(function () {
     console.log("light");
   }
 });
+<<<<<<< HEAD
+=======
+
+$("#public_status").change(function () {
+    if ($(this).is(":checked")) {
+        {
+            public = true
+        }
+    } else {
+        public = false
+    }
+    console.log(public)
+});
+
+
+>>>>>>> dev

@@ -80,8 +80,15 @@ router.post("/api/journal", async function (req, res) {
   var lastEntry = await getLastEntry(req.session.user.id);
   db.daily_history
     .update(
-      { journal_entry: req.body.journal_entry },
-      { where: { createdAt: lastEntry.createdAt } }
+      {
+        journal_entry: req.body.journal_entry,
+        public_status: req.body.public_status
+      },
+      {
+        where: {
+          createdAt: lastEntry.createdAt,
+        },
+      }
     )
     .then((data) => { res.send("journal updated") });
 });
