@@ -6,7 +6,7 @@ $("#textarea1").val("New Text");
 // M.textareaAutoResize($("#textarea1"));
 
 $("#memory").on("click", function () {
-    alert("Button works");
+  alert("Button works");
 });
 
 // const searchUsers = document.getElementById("search")
@@ -42,45 +42,38 @@ $("#memory").on("click", function () {
 // })
 
 $("#submit").on("click", function (event) {
-    event.preventDefault();
-    $.post("/api/journal", {
-        // memory_image: $("#memory_image").val(),
-        journal_entry: $("#journal_entry").val(),
-        public_status: public
+  event.preventDefault();
+  $.post("/api/journal", {
+    // memory_image: $("#memory_image").val(),
+    journal_entry: $("#journal_entry").val(),
+    public_status: public
+  })
+    .then((data) => {
+      console.log("saved entry");
+      public = false
+      window.location.href = "/home"
     })
-        .then((data) => {
-            console.log("saved entry");
-            public = false
-            window.location.href = "/home"
-        })
-        .fail((err) => {
-            console.log("error");
-            public = false
-        });
+    .fail((err) => {
+      console.log("error");
+      public = false
+    });
 
 });
 
 $("#searchIcon").on("click", function (event) {
-    event.preventDefault();
-    $.post("/api/find_user", {
-        find_user: $("#search").val(),
-    })
-        .then((data) => {
-            console.log(data)
-        })
-        .fail((err) => {
-            console.log(err)
-        })
-
-})
+  event.preventDefault();
+  if ($("#search").val().trim()) {
+    window.location.href = `/${$("#search").val().trim()}`;
+  }
+});
 
 //widget button click on userhome handlebars
 $("#upload_widget").on("click"),
-    function (event) {
-        event.preventDefault();
-        // sending a post request to backend containg the
-        $.post("");
-    };
+  function (event) {
+    event.preventDefault();
+    // sending a post request to backend containg the
+    $.post("");
+  };
 
 // TODO: Figure out if you have to rewrite the api/entries thing above to be something else
 
@@ -103,15 +96,15 @@ $("#upload_widget").on("click"),
 // })
 
 $("#edit").on("click", function (event) {
-    event.preventDefault();
-    const textInput = $("#textarea1").val();
-    console.log(textInput);
-    window.location.href = "/history";
-    alert("Update successfully!");
+  event.preventDefault();
+  const textInput = $("#textarea1").val();
+  console.log(textInput);
+  window.location.href = "/history";
+  alert("Update successfully!");
 });
 
 $("#delete").on("click", function () {
-    alert("Button works");
+  alert("Button works");
 });
 
 $("#textarea1").val("");
@@ -130,29 +123,29 @@ $("#textarea1").val("");
 //
 
 $("#mode").change(function () {
-    if ($(this).is(":checked")) {
-        {
-            $(".nav-wrapper").removeClass("navLight").addClass("navDark");
-            $(".container").removeClass("containerLight").addClass("containerDark");
+  if ($(this).is(":checked")) {
+    {
+      $(".nav-wrapper").removeClass("navLight").addClass("navDark");
+      $(".container").removeClass("containerLight").addClass("containerDark");
 
-            console.log("dark");
-        }
-    } else {
-        $(".nav-wrapper").removeClass("navDark").addClass("navLight");
-        $(".container").removeClass("containerDark").addClass("containerLight");
-        console.log("light");
+      console.log("dark");
     }
+  } else {
+    $(".nav-wrapper").removeClass("navDark").addClass("navLight");
+    $(".container").removeClass("containerDark").addClass("containerLight");
+    console.log("light");
+  }
 });
 
 $("#public_status").change(function () {
-    if ($(this).is(":checked")) {
-        {
-            public = true
-        }
-    } else {
-        public = false
+  if ($(this).is(":checked")) {
+    {
+      public = true
     }
-    console.log(public)
+  } else {
+    public = false
+  }
+  console.log(public)
 });
 
 

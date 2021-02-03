@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 module.exports = function (sequelize, DataTypes) {
   var daily_history = sequelize.define("daily_history", {
     color: {
@@ -56,10 +58,18 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+
     public_status: {
       type: DataTypes.BOOLEAN,
       default: false,
     },
+
+    DateTime: {
+      type: DataTypes.DATEONLY,
+      get: function () {
+        return moment(this.getDataValue('DateTime')).format('DD.MM.YYYY')
+      }
+    }
   });
 
   daily_history.associate = function (models) {
