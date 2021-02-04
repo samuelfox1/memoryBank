@@ -44,6 +44,7 @@ router.post("/login", (req, res) => {
           req.session.user = {
             id: userData.id,
             user_name: userData.user_name,
+            sign: userData.sign,
           };
           res.json(userData);
         } else {
