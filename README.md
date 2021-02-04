@@ -7,7 +7,7 @@
 * #### Story
     * AS A: User
     * I WANT: a place to reflect on my day and record my thoughts
-    * SO THAT: i can be more mindful and have a collection of memories review
+    * SO THAT: I can practice mindfulness and have a collection of memories to reflect on.
 
 <br>
 
