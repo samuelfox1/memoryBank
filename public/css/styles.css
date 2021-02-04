@@ -181,7 +181,7 @@ h5 {
   width: 70vw;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow: auto;
 }
 
 /* User homepage */
