@@ -73,7 +73,7 @@ $("#deletePhoto").on("click", function (event) {
     .then((data) => {
       location.reload();
     })
-    .fail((err) => {});
+    .fail((err) => { });
 
   // might want there to be an "are you sure" confirmation before they can delete
 });
