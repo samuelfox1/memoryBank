@@ -6,7 +6,7 @@
       <form class="col s12">
         <div class="row">
           <div class="input-field col s6">
-            <input placeholder="First Name" id="first_name" type="text" class="validate" />
+            <input placeholder="First Name" id="first_name" type="text" class="validate" minlength="1" />
             <label for="first_name">Name</label>
           </div>
           <div class="input-field col s6">
@@ -28,7 +28,7 @@
         <div class="row">
           <div class="input-field col s12">
             <input id="password" type="password" class="validate" />
-            <label for="password">Password</label>
+            <label for="password" minlength="8" maxlength="16">Password</label>
           </div>
         </div>
         <div class="row">
@@ -73,12 +73,17 @@
                 <li class="divider"></li>
                 <li><a href="#!">Pisces Feb 19 - March 20</a></li>
               </ul>
+              <p class="confirm-sign hide" style="color:red">Please select a sign</p>
+
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col s12">
             <a class="waves-effect waves-light btn" id="saveAccountBtn">Create Account</a>
+            <br>
+            <br>
+            <a class="waves-effect waves-light btn" href="/">Home</a>
           </div>
       </form>
     </div>

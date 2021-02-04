@@ -54,9 +54,8 @@ router.get("/home", async function (req, res) {
         req.session.user.id,
         req.session.user.sign
       );
-    } else {
-      console.log("todays data is up to date");
     }
+
 
     var lastEntry = await getLastEntry(req.session.user.id);
     db.daily_history
@@ -222,7 +221,6 @@ function makeApiRequest(id, userSign) {
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
       let aztro = JSON.parse(body);
-      console.log(aztro);
       db.daily_history
         //creating a whole new row with column fields to hoold the api id also set the userDatumId of the user
         .create({
@@ -240,7 +238,6 @@ function makeApiRequest(id, userSign) {
           DateTime: new Date(),
         })
         .then((data) => {
-          console.log(data);
           resolve(aztro);
         })
         .catch((err) => {

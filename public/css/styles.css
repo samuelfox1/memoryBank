@@ -115,7 +115,8 @@ h5 {
 }
 
 .match-passwords,
-.password-length {
+.password-length,
+.confirm-sign {
   text-align: left;
   color: red;
 }

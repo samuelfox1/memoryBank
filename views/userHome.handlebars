@@ -5,18 +5,11 @@
     <li><a id="logout">Logout</a></li>
 </ul>
 <nav>
-
     <div class="nav-wrapper">
         <div class="row">
-
             <div class="col s3 m4 l4">
                 <a href="/home" class="brand-logo left" id="title">MemoryBank</a>
             </div>
-
-            {{!-- <div class="col s4">
-                <h2 id="title">Memorybank</h2>
-            </div> --}}
-
             <div class="col s7 m4 l4">
                 <nav>
                     <div class="nav-wrapper">
@@ -26,21 +19,12 @@
                                 <label class="label-icon" for="search">
                                     <i class="material-icons" id="searchIcon">search</i></label>
                                 <i class="material-icons" id="closeButton">close</i>
-
                             </div>
                         </form>
                     </div>
-
             </div>
-
-            {{!-- Able to add a redirect to the search button, but not a function --}}
-            {{!-- How do we want the search function to work? Should it be able to find people based off of both
-            username and actual name? Should there be a "find friends" area? How would we decide which users to
-            recommend if we did that? --}}
-
             <div class="col s2 m4 l4">
                 <ul class="right">
-
                     <!-- Dropdown Trigger -->
                     <li>
                         <a class="dropdown-trigger" href="/home" data-target="dropdown1">
@@ -68,170 +52,61 @@
     <div class="row">
         <div class="col s12">
             <h1 id="welcomeH1">Welcome, {{users.first_name}}</h1>
-
         </div>
-
-
-
-
-
     </div>
     <h5>{{histories.createdAt}}</h5>
-
-
-
-
-
-
-
-
     <div id="hororscopeForDay">
         <h3>{{users.sign}} </h3>
         <p>{{histories.description}}</p>
     </div>
-
-
-
-
-
     <div id="otherLuckyInfo">
         <p>Lucky Color: {{histories.color}}</p>
         <p>Lucky Number: {{histories.lucky_number}}</p>
         <p>Lucky Time: {{histories.lucky_time}}</p>
         <p>Sign Compatibility: {{histories.compatibility}}</p>
         <p>Mood: {{histories.mood}}</p>
-
     </div>
-
-
     <br>
     <hr>
     <br>
-
-
-
     <div id="imageUpload">
         <img id="cloudinaryUpload" src={{histories.memory_image}}>
     </div>
-
-
     <div id="uploadArea">
-        {{!-- <a class="waves-effect waves-light btn" id="memory">Upload Memory Picture</a> --}}
         <div class="row">
             <div class="col s6" id="upload_picture">
                 <button id="upload_widget" class="cloudinary-button">UPLOAD PHOTO</button>
             </div>
-
             <div class="col s6" id="deleteButton2">
                 <button class="cloudinary-button" id="deletePhoto">DELETE PHOTO</button>
             </div>
-
         </div>
-
         <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-
         <script type="text/javascript">
             var myWidget = cloudinary.createUploadWidget({
                 cloudName: 'dl5nddb9b',
                 uploadPreset: 'awfcnrld'
             }, (error, result) => {
                 if (!error && result && result.event === "success") {
-                    console.log('Done! Here is the image info: ', result.info.secure_url);
 
                     //Cloudinary sends a post request to the /image route to the backend containg a string of data containg the image url to cloudinary
                     $.post("/api/image", {
                         memory_image: result.info.secure_url
                     })
-
-
                         .then((data) => {
-                            console.log(data, "saved image")
                             location.reload()
                         })
                         .fail((err) => {
                             console.log(err)
                         })
-
-
-
                 }
-            }
-            )
-
+            })
             document.getElementById("upload_widget").addEventListener("click", function () {
                 myWidget.open();
             }, false);
-
-
-
-
-            //document.addEventListener("keyup", function (event) {
-            //    if (event.keyCode === 13) {
-            //        event.preventDefault();
-            //        document.getElementById("searchIcon").click()
-            //    }
-           // })
-
-
-
-            //document.getElementById("searchBar").onsubmit(function () {
-           //     alert("HEHEHE")
-           // })
-
-           // const searchUsers = document.getElementById("searchBar")
-
-           // searchUsers.addEventListener("keyup", function (event) {
-           //     if (event.keyCode === 13) {
-          //          event.preventDefault();
-          //          document.getElementById("searchIcon").click()
-          //      }
-         //   })
-
-           // function trialFunction() {
-
-           //     if (event.keyCode === 13) {
-           //         event.preventDefault();
-            //        document.getElementById("searchIcon").click()
-           //     }
-           // }
-
-
-
         </script>
-
     </div>
-
     <br>
-
-    {{!-- <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea" rows="3" cols="80"></textarea>
-                    <label for="textarea1">Write your Journal Entry Here!</label>
-                </div>
-            </div>
-        </form>
-    </div> --}}
-
-
-
-    {{!-- on the review page, you should use a key for the value so that it's set to whatever they set it to when they
-    submitted it --}}
-
-    {{!-- Should also add approximately this code in your JS (may have to tweek it a bit)
-    $("#public_status").on('change', function() {
-    if ($(this).is(':checked')) {
-    $(this).attr('value', 'true');
-    } else {
-    $(this).attr('value', 'false');
-    } --}}
-    {{!-- TODO: COmbine these two --}}
-
-
-
-
-
     <div id="submitButton">
         <div class="row">
             <form class="col s12">
@@ -251,58 +126,28 @@
                 <div id="submitButton">
                     <a class="waves-effect waves-light btn" id="submit">Submit</a>
                 </div>
-
                 <div id="reloadButtons">
                     <div class="row">
                         <div class="col s6" id="resubmitButton">
-                            {{!-- <div class="col s6" id="resubmitButton" hidden> --}}
                             <a class="waves-effect waves-light btn" id="resubmit">Re-submit</a>
                         </div>
                         <div class="col s6" id="deleteButton">
-                            {{!-- <div class="col s6" id="deleteButton" hidden> --}}
                             <a class="waves-effect waves-light btn" id="deleteEntry">Delete Entry</a>
                         </div>
-
                     </div>
                 </div>
-
             </form>
         </div>
-
         <script type="text/javascript">
             if (document.getElementById("journal_entry").value != '') {
                 document.getElementById("deleteEntry").style.display = "block"
                 document.getElementById("resubmit").style.display = "block"
                 document.getElementById("submit").style.display = "none"
-                // $("#deleteEntry").hidden = false
             } else {
                 document.getElementById("deleteEntry").style.display = "none"
                 document.getElementById("resubmit").style.display = "none"
                 document.getElementById("submit").style.display = "block"
-
             }
         </script>
-
-
-
     </div>
-
-    {{!-- <br>
-    <br>
-    <hr id="breakToFeed">
-    <br>
-
-
-    <div id="feed">
-        <h3>Feed</h3>
-        <br>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero voluptas expedita totam, sed rerum ratione
-            repellat veritatis neque. Veritatis, vel pariatur architecto eos laudantium praesentium dolorem fugiat
-            consectetur ut illum.</p>
-        <br>
-        <hr id="feedHr">
-        <br>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse fuga aut molestiae odio nihil nam sapiente
-            placeat suscipit mollitia sint iste architecto quod possimus amet eum repellat ducimus, natus voluptate!</p>
-    </div> --}}
 </div>

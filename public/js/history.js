@@ -18,7 +18,6 @@ $(document).on("click", "#delete-button", function () {
 
 $(document).on("click", "#historyViewBtn", function () {
   let id = $(this).data("id");
-  console.log($(this).text())
 
   if ($(this).text() === 'View More') {
     $("#card-" + id).removeClass("small")

@@ -12,10 +12,8 @@ homeCreateBtn.on("click", function () {
 
 
 $(document).on("click", "#logout", function () {
-  console.log("logout clicked")
   $.get("/logout")
     .then(data => {
-      console.log(data, "!!!!!!!!!!!!!!!!!!!")
       window.location.href = "/";
     })
     .fail(err => {
