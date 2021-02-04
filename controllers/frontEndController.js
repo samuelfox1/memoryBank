@@ -7,7 +7,6 @@ const request = require("request");
 // / route to the welcome page
 router.get("/", async function (req, res) {
   if (req.session.user) {
-    console.log("logged in !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     var lastEntry = await getLastEntry(req.session.user.id);
     db.daily_history
       .findOne({
@@ -23,7 +22,6 @@ router.get("/", async function (req, res) {
         res.render("userHome", hbsObj);
       });
   } else {
-    console.log("logged out !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     res.render("index");
   }
 });
@@ -81,50 +79,58 @@ router.get("/home", async function (req, res) {
 
 // /history route that the user can visit once logged in from the burger bar in the top right to view past entries order by most recent day
 router.get("/history", function (req, res) {
-  db.daily_history
-    .findAll({
-      where: { userDatumId: req.session.user.id },
-      include: [db.user_data],
-      order: [["createdAt", "DESC"]],
-    })
-    .then((data) => {
-      // data[0].createdAt = convertDate(data[0].createdAt);
+  if (req.session.user) {
+    db.daily_history
+      .findAll({
+        where: { userDatumId: req.session.user.id },
+        include: [db.user_data],
+        order: [["createdAt", "DESC"]],
+      })
+      .then((data) => {
+        // data[0].createdAt = convertDate(data[0].createdAt);
 
-      const jsonData = data.map((obj) => {
-        const jsonObj = obj.toJSON();
-        return jsonObj;
+        const jsonData = data.map((obj) => {
+          const jsonObj = obj.toJSON();
+          return jsonObj;
+        });
+        const hbsObj = {
+          histories: jsonData,
+        };
+
+        res.render("history", hbsObj);
       });
-      const hbsObj = {
-        histories: jsonData,
-      };
-
-      res.render("history", hbsObj);
-    });
+  } else {
+    res.redirect("/");
+  }
 });
 
 router.get("/:term", (req, res) => {
-  db.user_data
-    .findAll({
-      where: {
-        [Op.or]: [
-          { user_name: req.params.term },
-          { first_name: req.params.term },
-          { last_name: req.params.term },
-          { sign: req.params.term },
-          { email: req.params.term },
-        ],
-      },
-    })
-    .then((data) => {
-      const jsonData = data.map((obj) => {
-        const jsonObj = obj.toJSON();
-        return jsonObj;
+  if (req.session.user) {
+    db.user_data
+      .findAll({
+        where: {
+          [Op.or]: [
+            { user_name: req.params.term },
+            { first_name: req.params.term },
+            { last_name: req.params.term },
+            { sign: req.params.term },
+            { email: req.params.term },
+          ],
+        },
+      })
+      .then((data) => {
+        const jsonData = data.map((obj) => {
+          const jsonObj = obj.toJSON();
+          return jsonObj;
+        });
+        const hbsObj = {
+          data: jsonData,
+        };
+        res.render("testsearch", hbsObj);
       });
-      const hbsObj = {
-        data: jsonData,
-      };
-      res.render("testsearch", hbsObj);
-    });
+  } else {
+    res.redirect("/");
+  }
 });
 
 // get todays date formatted as mm/dd/yyyy

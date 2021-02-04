@@ -2,8 +2,7 @@ const saveAccountBtn = $("#saveAccountBtn");
 
 $(".dropdown-trigger").dropdown();
 
-function createAccount(event) {
-  event.preventDefault();
+function createAccount() {
   let sign = $(".zodiacBtn").text().split(" ");
 
   $.post("/create", {
