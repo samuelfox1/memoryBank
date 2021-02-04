@@ -14,16 +14,17 @@ $(document).on("click", "#delete-button", function () {
   });
 });
 
-$(document).on("click", ".viewMore", function () {
-  let id = $(this).data("id");
-  $("#card-" + id).removeClass("small");
-  contract.removeClass("hide");
-  expand.addClass("hide");
-});
 
-$(document).on("click", ".viewLess", function () {
+
+$(document).on("click", "#historyViewBtn", function () {
   let id = $(this).data("id");
-  $("#card-" + id).addClass("small");
-  contract.addClass("hide");
-  expand.removeClass("hide");
+  console.log($(this).text())
+
+  if ($(this).text() === 'View More') {
+    $("#card-" + id).removeClass("small")
+    $(this).text('View Less')
+  } else {
+    $("#card-" + id).addClass("small");
+    $(this).text('View More')
+  }
 });
