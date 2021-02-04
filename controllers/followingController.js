@@ -2,15 +2,10 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
-
-
-
 // route to check session user info
 router.get("/session", (req, res) => {
   res.json(req.session);
 });
-
-
 
 // route for the session user to follow another user
 // find the user that belongs to the session id
@@ -19,12 +14,10 @@ router.post("/api/follow/:id", async function (req, res) {
   db.user_data
     .findOne({ where: { id: req.session.user.id } })
     .then((dbUser) => {
-      console.log(dbUser, "!!!!!!!!!!!!!!!!!!!!!!!!")
       dbUser.addChildren(req.params.id);
       res.json(dbUser);
     });
 });
-
 
 // route for the session user to follow another user
 // find the user that belongs to the session id
@@ -33,13 +26,10 @@ router.post("/api/unfollow/:id", async function (req, res) {
   db.user_data
     .findOne({ where: { id: req.session.user.id } })
     .then((dbUser) => {
-      console.log(dbUser, "!!!!!!!!!!!!!!!!!!!!!!!!")
       dbUser.removeChildren(req.params.id);
       res.json(dbUser);
     });
 });
-
-
 
 // route for the session user to get data about all followers
 // find the user that belongs to the session id
@@ -48,11 +38,13 @@ router.get("/api/followers/", async function (req, res) {
   db.user_data
     .findOne({
       where: { id: req.session.user.id },
-      include: [{ model: db.user_data, as: "Children", include: [db.daily_history] }],
+      include: [
+        { model: db.user_data, as: "Children", include: [db.daily_history] },
+      ],
     })
-    .then((data) => { res.json(data) });
+    .then((data) => {
+      res.json(data);
+    });
 });
-
-
 
 module.exports = router;
