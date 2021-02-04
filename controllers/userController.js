@@ -95,7 +95,6 @@ router.post("/api/journal", async function (req, res) {
 });
 
 router.post("/api/deleteHistory", (req, res) => {
-  console.log(req.body.id);
   db.daily_history
     .destroy({
       where: {

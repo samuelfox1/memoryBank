@@ -97,7 +97,7 @@ router.get("/history", function (req, res) {
       const hbsObj = {
         histories: jsonData,
       };
-      console.log(jsonData);
+
       res.render("history", hbsObj);
     });
 });

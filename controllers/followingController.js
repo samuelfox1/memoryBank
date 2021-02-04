@@ -14,7 +14,6 @@ router.post("/api/follow/:id", async function (req, res) {
   db.user_data
     .findOne({ where: { id: req.session.user.id } })
     .then((dbUser) => {
-      console.log(dbUser, "!!!!!!!!!!!!!!!!!!!!!!!!");
       dbUser.addChildren(req.params.id);
       res.json(dbUser);
     });
@@ -27,7 +26,6 @@ router.post("/api/unfollow/:id", async function (req, res) {
   db.user_data
     .findOne({ where: { id: req.session.user.id } })
     .then((dbUser) => {
-      console.log(dbUser, "!!!!!!!!!!!!!!!!!!!!!!!!");
       dbUser.removeChildren(req.params.id);
       res.json(dbUser);
     });
@@ -45,7 +43,6 @@ router.get("/api/followers/", async function (req, res) {
       ],
     })
     .then((data) => {
-      console.log(data);
       res.json(data);
     });
 });
