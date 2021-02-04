@@ -160,7 +160,6 @@ $("#deletePhoto").on("click", function (event) {
 
 // TODO: If statement where if there is text in the daily entry field, hide the submit button and show the other three
 
-console.log($("#journal_entry").val())
 
 
 
