@@ -5,11 +5,8 @@ const db = require("../models");
 const request = require("request");
 require("dotenv").config();
 
-
 // Settings snippet for the aztro api call
 var userSign = "";
-
-
 
 // Big picture of what this call is trying to do is create ONE DAY INSTANCE of data retreval from the api for each individual user based on there unique id and passing thier sign as the query term for the API.
 
@@ -22,7 +19,6 @@ var userSign = "";
 //send the results back to client
 //send the stored results back to the frontend
 router.get("/api/aztro/:id/:sign", async function (req, res) {
-
   userSign = req.params.sign;
   var today = getToday();
   var lastEntry = await getLastEntryDate(req.params.id);
@@ -30,13 +26,10 @@ router.get("/api/aztro/:id/:sign", async function (req, res) {
   if (today != lastEntry) {
     var aztro = await makeApiRequest(req.params.id);
     res.json(aztro);
-
   } else {
-    console.log("todays data is up to date");
     res.json(req.session.user);
   }
 });
-
 
 // get todays date formatted as mm/dd/yyyy
 function getToday() {
@@ -47,8 +40,6 @@ function getToday() {
   x = mm + "/" + dd + "/" + yyyy;
   return x;
 }
-
-
 
 // this will reutrn the most recent row entry for the user with id passed in
 function getLastEntryDate(data) {
@@ -72,8 +63,7 @@ function getLastEntryDate(data) {
       .then((data) => {
         if (data[0] === undefined) {
           resolve("user has no entries");
-        }
-        else {
+        } else {
           let x = data[0].createdAt;
           let dd = String(x.getDate()).padStart(2, "0");
           let mm = String(x.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -81,12 +71,12 @@ function getLastEntryDate(data) {
           x = mm + "/" + dd + "/" + yyyy;
           resolve(x);
         }
-      }).catch(err => {
-        reject(err)
       })
+      .catch((err) => {
+        reject(err);
+      });
   });
 }
-
 
 // make the API call and save the returned data in the database for each user.
 // set the options required for the API call
@@ -104,11 +94,10 @@ function makeApiRequest(data) {
   };
 
   return new Promise((resolve, reject) => {
-
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
       let aztro = JSON.parse(body);
-      console.log(aztro);
+
       db.daily_history
         //creating a whole new row with column fields to hoold the api data also set the userDatumId of the user
         .create({
@@ -123,18 +112,16 @@ function makeApiRequest(data) {
           userDatumId: data,
           memory_image:
             "https://www.astrologybythebay.com/articles_photos/article-placeholder.jpg",
-          DateTime: new Date()
+          DateTime: new Date(),
         })
         .then((data) => {
-          console.log(data)
           resolve(aztro);
-        }).catch(err => {
-          reject(err)
         })
+        .catch((err) => {
+          reject(err);
+        });
     });
   });
 }
-
-
 
 module.exports = router;

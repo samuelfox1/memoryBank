@@ -114,6 +114,12 @@ h5 {
   margin-bottom: 1%;
 }
 
+.match-passwords,
+.password-length {
+  text-align: left;
+  color: red;
+}
+
 /* Login Page */
 
 #mainLoginRow {
@@ -136,6 +142,10 @@ h5 {
 
 .login-input {
   color: white;
+}
+
+.incorrect-user {
+  color: red;
 }
 
 /* History page */

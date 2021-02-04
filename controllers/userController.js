@@ -3,8 +3,6 @@ const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcrypt");
 
-
-
 // /create route that will create the table structure for the datbase and insert the user givin information fro the user on the creation page and apply it into the field columns on that table
 router.post("/create", function (req, res) {
   db.user_data
@@ -16,11 +14,13 @@ router.post("/create", function (req, res) {
       sign: req.body.sign,
       email: req.body.email,
     })
-    .then((data) => { res.json(data) })
-    .catch((err) => { res.status(500).json(err) });
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 });
-
-
 
 // back end recieves req(request) data from front end on a button click event.
 // on request we search through the db at the table of user_data
@@ -54,8 +54,6 @@ router.post("/login", (req, res) => {
     });
 });
 
-
-
 // image url data string being sent from the front end cloudinary call
 router.post("/api/image", async function (req, res) {
   // the variable lastEntry refers to the createdAt column in our DB based upon the specific user ID wihhin the scope of our user session
@@ -68,10 +66,10 @@ router.post("/api/image", async function (req, res) {
       { memory_image: req.body.memory_image },
       { where: { createdAt: lastEntry.createdAt } }
     )
-    .then((data) => { res.send("updated") });
+    .then((data) => {
+      res.send("updated");
+    });
 });
-
-
 
 // the variable lastEntry refers to the createdAt column in our DB based upon the specific user ID wihhin the scope of our user session
 // await fuction makes sure the lastEntry variable is populated with the function (data) from getLastEntry
@@ -82,7 +80,7 @@ router.post("/api/journal", async function (req, res) {
     .update(
       {
         journal_entry: req.body.journal_entry,
-        public_status: req.body.public_status
+        public_status: req.body.public_status,
       },
       {
         where: {
@@ -90,15 +88,12 @@ router.post("/api/journal", async function (req, res) {
         },
       }
     )
-    .then((data) => { res.send("journal updated") });
+    .then((data) => {
+      res.send("journal updated");
+    });
 });
 
-
-
 router.post("/api/deleteHistory", (req, res) => {
-  console.log(
-    req.body.id,
-  );
   db.daily_history
     .destroy({
       where: {
@@ -110,8 +105,6 @@ router.post("/api/deleteHistory", (req, res) => {
     });
 });
 
-
-
 //returns the most recent entry for the logged in user
 function getLastEntry(data) {
   return new Promise((resolve, reject) => {
@@ -120,7 +113,9 @@ function getLastEntry(data) {
         { where: { userDatumId: data } },
         { limit: 1, order: [["createdAt", "DESC"]] }
       )
-      .then((data) => { resolve(data[0]) });
+      .then((data) => {
+        resolve(data[0]);
+      });
   });
 }
 
