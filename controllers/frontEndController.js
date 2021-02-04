@@ -5,8 +5,27 @@ const db = require("../models");
 const { Op } = require("sequelize");
 const request = require("request");
 // / route to the welcome page
-router.get("/", function (req, res) {
-  res.render("index");
+router.get("/", async function (req, res) {
+  if (req.session.user) {
+    console.log("logged in !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    var lastEntry = await getLastEntry(req.session.user.id);
+    db.daily_history
+      .findOne({
+        where: { createdAt: lastEntry.createdAt },
+        include: [db.user_data],
+      })
+      .then((data) => {
+        data.dataValues.createdAt = convertDate(data.dataValues.createdAt);
+        const hbsObj = {
+          histories: data.dataValues,
+          users: data.dataValues.user_datum.dataValues,
+        };
+        res.render("userHome", hbsObj);
+      });
+  } else {
+    console.log("logged out !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    res.render("index");
+  }
 });
 
 // /login route to go to login page
@@ -22,7 +41,7 @@ router.get("/create", (req, res) => {
 //route to destroy active session cookie
 router.get("/logout", (req, res) => {
   req.session.destroy();
-  res.send("logged out");
+  res.redirect("/");
 });
 
 // /home route for after login user goes to their home page

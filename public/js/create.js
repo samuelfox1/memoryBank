@@ -1,7 +1,6 @@
 const saveAccountBtn = $("#saveAccountBtn");
 
 $(".dropdown-trigger").dropdown();
-console.log("hello");
 
 function createAccount() {
   // event.preventDefault();
