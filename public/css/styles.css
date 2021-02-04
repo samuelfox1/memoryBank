@@ -29,10 +29,15 @@ h5 {
   text-align: center;
 }
 
-.switch, #mode {
+.switch,
+#mode {
   text-align: right;
 }
-/* TODO: Fix dark mode by referencing this */
+
+.switch {
+  padding-top: 2vw;
+}
+
 #title {
   color: black;
   text-align: left;
@@ -40,7 +45,21 @@ h5 {
   font-family: "apple chancery";
 }
 
+#feed {
+  text-align: center;
+  padding-bottom: 2vw;
+}
 
+#feedHr {
+  width: 60%;
+}
+
+#breakToFeed {
+  width: 90%;
+  height: 2px;
+  color: black;
+  background-color: black;
+}
 
 .containerDiv {
   margin-top: 10%;
@@ -130,7 +149,6 @@ h5 {
   font-family: "Dancing Script", cursive;
 }
 
-
 .nav-wrapper {
   padding-left: 2vw;
   background-color: white;
@@ -184,7 +202,9 @@ h5 {
   text-align: left;
 }
 
-
+.clear-btn {
+  background-color: rgb(230, 32, 32);
+}
 
 .welcomeContainer {
   background: rgba(255, 255, 255, 0.925);
@@ -196,30 +216,31 @@ h5 {
 }
 
 #welcomeH1 {
-  text-align: right;
+  margin-top: 0%;
+  text-align: center;
 }
 
 hr {
-  width: 80%;
+  width: 85%;
 }
 
-#imageUpload{
+#imageUpload {
   text-align: center;
   padding-bottom: 2vw;
 }
 
-#cloudinaryUpload{
+#cloudinaryUpload {
   width: 100%;
   height: 100%;
   max-width: 500px;
   max-height: 800px;
 }
 
-#resubmitButton{
+#resubmitButton {
   text-align: right;
 }
 
-#deleteButton{
+#deleteButton {
   text-align: left;
 }
 
@@ -227,19 +248,19 @@ hr {
   background-color: #26a69a;
 }
 
-#upload_picture{
+#upload_picture {
   text-align: right;
 }
 
-#deleteButton2{
+#deleteButton2 {
   text-align: left;
 }
 
-#deleteEntry{
+#deleteEntry {
   background-color: rgb(230, 32, 32);
 }
 
-#deletePhoto{
+#deletePhoto {
   background-color: rgb(230, 32, 32);
 }
 
@@ -277,13 +298,6 @@ hr {
   align-items: center;
   height: 10vh;
 }
-
-
-
-
-
-
-
 
 #pubPriv {
   text-align: center;
@@ -323,7 +337,7 @@ hr {
 
 .top-right {
   margin-left: 89%;
-  margin-bottom: 90%;
+  margin-bottom: 105%;
 }
 
 .material-icons {
@@ -335,20 +349,41 @@ hr {
 }
 
 .follow-card {
-  width: 30%;
+  width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#follow {
+  margin-bottom: 3%;
 }
 #follow-card-div {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
 
+.button-row {
+  margin: 0%;
+}
+
 @media screen and (max-width: 700px) {
+  .navbar-css1 {
+    display: flex;
+    justify-content: left;
+  }
+  .navbar-css2 {
+    display: flex;
+    justify-content: center;
+  }
+  .navbar-css3 {
+    display: flex;
+    justify-content: right;
+  }
   .follow-card {
     width: 80%;
   }
@@ -359,5 +394,49 @@ hr {
   }
   #follow {
     margin-bottom: 4%;
+  }
+
+  #search {
+    font-size: 10px;
+  }
+
+  #title {
+    font-size: 15px;
+  }
+
+  /* body {
+    width: 90vw;
+    overflow-x: hidden;
+  }
+
+  .containerDiv {
+    width: 90%;
+  } */
+
+  /* .body {
+    width: 90vw;
+    overflow-x: hidden;
+  } */
+  #createDiv {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .card-div {
+    width: 60vw;
+    overflow-x: hidden;
+  }
+
+  .card-title {
+    margin-left: 73%;
+    margin-bottom: 53%;
+  }
+
+  .top-right {
+    margin-left: 73%;
+    margin-bottom: 89%;
   }
 }
