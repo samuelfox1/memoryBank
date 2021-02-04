@@ -1,31 +1,37 @@
-<div class="containerDiv"></div>
+<div class="containerDiv">
 
-<div class="container circleContainer" id = "loginContainer" >
-  <div class="loginDiv">
+  <div class="container circleContainer" id="loginContainer">
+    <div class="loginDiv">
 
-  <h1 class = "defaultH1">Login</h1>
-  <div class="row login-row" id="mainLoginRow">
-    <form class="col s12">
-      <div class="row usernameRow">
-        <div class="input-field col s12 login-input">
-          <input id="username" type="text" class="validate" />
-          <label class = "labelColor" for="username">Username</label>
+      <h1 class="defaultH1">Login</h1>
+      <div class="row login-row" id="mainLoginRow">
+        <form class="col s12">
+          <div class="row usernameRow">
+            <div class="input-field col s12 login-input">
+              <input id="username" type="text" class="validate" />
+              <label class="labelColor" for="username">Username</label>
+            </div>
+          </div>
+          <div class="row login-row">
+            <div class="input-field col s12 login-input">
+              <input id="password" type="password" class="validate" />
+              <label class="labelColor" for="password">Password</label>
+              
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="cols 12">
+          <p class="incorrect-user hide">Username or password is incorrect</p>
         </div>
       </div>
-  <div class="row login-row">
-    <div class="input-field col s12 login-input">
-      <input id="password" type="password" class="validate" />
-      <label class="labelColor" for="password">Password</label>
+      <div class="row">
+        <div class="col s12">
+          <a class="waves-effect waves-light btn" id="loginToAccountBtn">Login</a>
+        </div>
+        
+      </div>
     </div>
   </div>
-  </div>
-
-  <div class="row">
-    <div class="col s12">
-      <a class="waves-effect waves-light btn" id="loginToAccountBtn">Login</a>
-    </div>
-    </form>
-  </div>
-  </div>
-</div>
 </div>
