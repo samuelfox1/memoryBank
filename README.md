@@ -66,7 +66,7 @@
 
 | Name | Email  | Github  | LinkedIn |
 | :--: | :----: | :-----: | :------: |
-| Andrew Anthony | a.anthony1835@gmail.com |[![Github](./public/images/logo/github.png)](https://github.com/andrew1835) | [![LinkedIn](./public/images/logo/linkedin.png)](www.linkedin.com/in/andrew-anthony-a62357159) |
+| Andrew Anthony | a.anthony1835@gmail.com |[![Github](./public/images/logo/github.png)](https://github.com/andrew1835) | [![LinkedIn](./public/images/logo/linkedin.png)](https://www.linkedin.com/in/andrew-anthony-a62357159) |
 | Kevin Hsieh| khsieh95@gmail.com |[![Github](./public/images/logo/github.png)](https://github.com/khsieh95) |  |
 | Mitchell Bean| mitchtroybean@gmail.com |[![Github](./public/images/logo/github.png)](https://github.com/mitchlltbean)  |
 | Samuel Fox | samueljasonfox@gmail.com | [![Github](./public/images/logo/github.png)](https://github.com/samuelfox1) | [![LinkedIn](./public/images/logo/linkedin.png)](https://www.linkedin.com/in/samuel-fox-tacoma) |
