@@ -34,7 +34,11 @@
 
 >## Product
 
-* [Check it out!](https://memorybank2021.herokuapp.com/) 
+* [Check it out!](https://memorybank2021.herokuapp.com/)
+demo login
+* username: demo
+* password: password
+
 
 ![Screenshot](./public/images/login.png)
 ![Screenshot](./public/images/home.png)
