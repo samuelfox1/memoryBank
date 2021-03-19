@@ -29,7 +29,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](./assets/utils/CodeOfConduct.md)
 <br>
 
-![html](https://img.shields.io/badge/-HTML5-blue?logo=html5)![css](https://img.shields.io/badge/-CSS-red?logo=css3)![javascript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)![node.js](https://img.shields.io/badge/-node.js-339933?logo=node.js&logoColor=white)![node.js](https://img.shields.io/badge/-Express-000000?logo=JavaScript&logoColor=yellow)![MySQL](https://img.shields.io/badge/-MySQL-4479A1?logo=MySQL&logoColor=white)![handlebars.js](https://img.shields.io/badge/-handlebars.js-FF7D00)![MaterializeCSS](https://img.shields.io/badge/-MaterializeCSS-FF7F7F?logo=Material%20Design&logoColor=white)
+![html](https://img.shields.io/badge/-HTML5-blue?logo=html5)![css](https://img.shields.io/badge/-CSS-red?logo=css3)![javascript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)![node.js](https://img.shields.io/badge/-node.js-339933?logo=node.js&logoColor=white)![node.js](https://img.shields.io/badge/-Express-000000?logo=JavaScript&logoColor=yellow)![MySQL](https://img.shields.io/badge/-MySQL-4479A1?logo=MySQL&logoColor=white)![Sequelize ORM](https://img.shields.io/badge/-Sequelize%20ORM-4479A1)![Postman](https://img.shields.io/badge/-Postman-FF6C37?logo=Postman&logoColor=white)![handlebars.js](https://img.shields.io/badge/-handlebars.js-FF7D00)![MaterializeCSS](https://img.shields.io/badge/-MaterializeCSS-FF7F7F?logo=Material%20Design&logoColor=white)![Heroku](https://img.shields.io/badge/-Heroku-430098?logo=Heroku&logoColor=white)
 
 
 >## Product
@@ -70,7 +70,7 @@ demo login
 
 | Name | Email  | Github  | LinkedIn |
 | :--: | :----: | :-----: | :------: |
-| Andrew Anthony | a.anthony1835@gmail.com |[![Github](./public/images/logo/github.png)](https://github.com/andrew1835) | [![LinkedIn](./public/images/logo/linkedin.png)](www.linkedin.com/in/andrew-anthony-a62357159) |
+| Andrew Anthony | a.anthony1835@gmail.com |[![Github](./public/images/logo/github.png)](https://github.com/andrew1835) | [![LinkedIn](./public/images/logo/linkedin.png)](https://www.linkedin.com/in/andrew-anthony-a62357159) |
 | Kevin Hsieh| khsieh95@gmail.com |[![Github](./public/images/logo/github.png)](https://github.com/khsieh95) |  |
 | Mitchell Bean| mitchtroybean@gmail.com |[![Github](./public/images/logo/github.png)](https://github.com/mitchlltbean)  |
 | Samuel Fox | samueljasonfox@gmail.com | [![Github](./public/images/logo/github.png)](https://github.com/samuelfox1) | [![LinkedIn](./public/images/logo/linkedin.png)](https://www.linkedin.com/in/samuel-fox-tacoma) |
